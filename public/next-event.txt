@@ -1,10 +1,10 @@
 # Date:
-August 21, 2025
+September 4, 2025
 # Title
-PHP Meetup, Sharpen hacking skills with real Capture The Flag (CTF) challenges
+PHP Meetup, TwigQI: static code analysis for Twig templates by Jeroen Versteeg
 # Description
-Passionate about security? This meetup is for you! Beginner to advanced. Don't forget your laptop.
+The speaker, Jeroen Versteeg, created a tool that statically analyses Twig templates to prevent bugs. It's similar to PHPStan, but for templates.
 # Location
 Youwe groningen
 # Link
-https://www.meetup.com/groningenphp/events/309310509/
+https://www.meetup.com/groningenphp/events/307961454/
