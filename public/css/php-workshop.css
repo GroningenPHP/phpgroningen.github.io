@@ -142,6 +142,39 @@
 .version-badge.v80 { background: #5b21b6; }  /* purple — PHP 8.0+ foundation */
 .version-badge.v84 { background: #DA121A; }  /* Groningen red */
 .version-badge.v85 { background: #0F47AF; }  /* Groningen blue */
+.version-badge--security { background: #c0392b; }
+.version-badge--ai { background: #7c3aed; }
+.version-badge--offset { margin-left: 4px; }
+.version-badge--compact { font-size: 0.65rem; padding: 2px 8px; }
+
+.rules-box--mt-1 { margin-top: 1rem; }
+.rules-box--mt-1-5 { margin-top: 1.5rem; }
+.subtext--left { text-align: left; margin-bottom: 1rem; }
+.badge-row { display: flex; gap: 4px; }
+.exercise-nav-link--hidden { visibility: hidden; }
+.tip-tail { margin-top: auto; }
+
+.attributes-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.9rem;
+    margin-bottom: 0.5rem;
+}
+
+.attributes-table th,
+.attributes-table td {
+    padding: 8px 12px;
+    border: 1px solid #e2e8f0;
+}
+
+.attributes-table__head {
+    background: #f1f5f9;
+    text-align: left;
+}
+
+.attributes-table__row--alt {
+    background: #f8fafc;
+}
 
 .feature-pill {
     display: inline-flex;

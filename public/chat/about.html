@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>About Workshop Chat — GroningenPHP</title>
     <link rel="icon" href="../../favicon.ico" type="image/x-icon" sizes="any"/>
+    <link rel="stylesheet" href="chat.css">
     <style>
         :root {
             --groningen-red:   #DA121A;
@@ -26,43 +27,6 @@
             color: var(--dark-gray);
             line-height: 1.7;
         }
-
-        /* ── Header ── */
-        .site-header {
-            background: #fff;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            padding: 0 24px;
-            height: 60px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            position: sticky;
-            top: 0;
-            z-index: 100;
-        }
-        .site-header .logo-area {
-            display: flex; align-items: center; gap: 10px;
-        }
-        .site-header .logo {
-            display: flex; align-items: center; gap: 10px;
-            text-decoration: none; color: inherit;
-        }
-        .site-header .logo span {
-            font-weight: 700; font-size: 1.3rem; color: var(--groningen-green);
-        }
-        .site-header .logo-divider {
-            width: 1px; height: 22px; background: #d0d0d0; flex-shrink: 0;
-        }
-        .site-header .logo-sub {
-            font-weight: 600; font-size: 1rem; color: var(--groningen-blue);
-        }
-        .site-header nav { display: flex; align-items: center; gap: 4px; }
-        .site-header nav a {
-            color: var(--dark-gray); text-decoration: none; font-weight: 500;
-            font-size: 0.9rem; padding: 6px 12px; border-radius: 6px;
-            transition: background 0.15s, color 0.15s;
-        }
-        .site-header nav a:hover { background: var(--light-gray); color: var(--groningen-blue); }
 
         /* ── Layout ── */
         main {
@@ -382,11 +346,30 @@
         }
 
         section { margin-bottom: 48px; }
+
+        .p-note-top { margin-top: 10px; }
+        .diagram-note {
+            text-align: center;
+            font-size: 0.78rem;
+            color: var(--medium-gray);
+            margin-top: 20px;
+        }
+        .subsection-heading { margin-top: 28px; margin-bottom: 12px; }
+        .subsection-heading--tight { margin-top: 8px; margin-bottom: 12px; }
+        .card--flush { padding: 0; overflow: hidden; }
+        .info-list {
+            padding-left: 20px;
+            font-size: 0.9rem;
+            color: var(--medium-gray);
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
     </style>
 </head>
 <body>
 
-<header class="site-header">
+<header class="site-header site-header--sticky">
     <div class="logo-area">
         <a class="logo" href="/">
             <span>GroningenPHP</span>
@@ -451,7 +434,7 @@
                     <tr><td><code>phpgrn/{PIN}/broadcast</code></td><td>Controller → all participants</td></tr>
                     <tr><td><code>phpgrn/{PIN}/dm/{id}</code></td><td>Controller → one participant</td></tr>
                 </table>
-                <p style="margin-top:10px;">The controller's Last Will is a <code>session-end</code> broadcast, so participants are notified even if the host's browser crashes.</p>
+                <p class="p-note-top">The controller's Last Will is a <code>session-end</code> broadcast, so participants are notified even if the host's browser crashes.</p>
             </div>
 
             <div class="tech-card">
@@ -526,7 +509,7 @@
             </div>
 
             <!-- Broker note -->
-            <p style="text-align:center; font-size:0.78rem; color:var(--medium-gray); margin-top:20px;">
+            <p class="diagram-note">
                 All traffic passes through the MQTT broker over an encrypted TLS/WebSocket connection. No direct browser-to-browser path is needed, so the app works on guest Wi-Fi with client isolation.
             </p>
         </div>
@@ -599,8 +582,8 @@
             <strong>Public broker notice.</strong> The default broker (<code>broker.emqx.io</code>) is a shared free-tier service operated by EMQX. The broker operator <em>can</em> read message payloads in transit. Additionally, anyone who guesses or knows your 5-digit PIN could subscribe to <code>phpgrn/{PIN}/#</code> and silently receive all messages. For a typical PHP workshop this is acceptable — nothing sensitive is shared. For sessions involving confidential code or personal data, use a private MQTT broker (enter its WSS URL in the <em>Custom MQTT broker</em> field).
         </div>
 
-        <h3 style="margin-top:8px; margin-bottom:12px;">What data leaves your browser, and where does it go?</h3>
-        <div class="card" style="padding: 0; overflow: hidden;">
+        <h3 class="subsection-heading--tight">What data leaves your browser, and where does it go?</h3>
+        <div class="card card--flush">
             <table>
                 <thead>
                     <tr>
@@ -654,18 +637,18 @@
             </table>
         </div>
 
-        <h3 style="margin-top:28px; margin-bottom:12px;">What stays only in the browser?</h3>
+        <h3 class="subsection-heading">What stays only in the browser?</h3>
         <div class="card">
-            <ul style="padding-left:20px; font-size:0.9rem; color:var(--medium-gray); display:flex; flex-direction:column; gap:8px;">
+            <ul class="info-list">
                 <li><strong>Message history</strong> — held in the controller tab's memory only; never written to disk by this app.</li>
                 <li><strong>Reconnect token</strong> — a random hex string saved in <code>localStorage</code> under <code>phpgrn-token-{PIN}</code>. Used only to let a participant reclaim their display name after a page refresh. Cleared when the host ends the session.</li>
                 <li><strong>Participant ID</strong> — a random UUID generated at join time, kept in memory for the session lifetime. Never persisted.</li>
             </ul>
         </div>
 
-        <h3 style="margin-top:28px; margin-bottom:12px;">Recommendations for sensitive workshops</h3>
+        <h3 class="subsection-heading">Recommendations for sensitive workshops</h3>
         <div class="card">
-            <ul style="padding-left:20px; font-size:0.9rem; color:var(--medium-gray); display:flex; flex-direction:column; gap:8px;">
+            <ul class="info-list">
                 <li>Self-host a Mosquitto or EMQX broker behind authentication and use the <em>Custom MQTT broker</em> option.</li>
                 <li>Restrict broker access to the workshop venue's IP range.</li>
                 <li>Choose a long, random session name — the PIN is only 5 digits, but the topic also includes the room name in the join URL.</li>

@@ -59,8 +59,8 @@
     <section class="exercise-section">
         <div class="exercise-header">
             <span class="version-badge v80">PHP 8.0+</span>
-            <span class="version-badge v84" style="margin-left:4px;">PHP 8.4</span>
-            <span class="version-badge v85" style="margin-left:4px;">PHP 8.5</span>
+            <span class="version-badge v84 version-badge--offset">PHP 8.4</span>
+            <span class="version-badge v85 version-badge--offset">PHP 8.5</span>
             <h2>🏷️ Exercise 4 — PHP Attributes</h2>
             <div class="features-row">
                 <span class="features-label">Features:</span>
@@ -78,7 +78,7 @@
         <div class="exercise-body">
             <h3>📖 The setup</h3>
 
-            <h3 style="margin-top:1rem;">What is an attribute?</h3>
+            <h3 class="rules-box--mt-1">What is an attribute?</h3>
             <p>
                 An <strong>attribute</strong> is a label you stick on a piece of code to say something <em>about</em> it —
                 without changing what the code <em>does</em>. Think of it like a sticky note on a file folder:
@@ -149,39 +149,39 @@ echo $route-&gt;method; // POST</code></pre>
             <p>
                 You don't need to create all attributes yourself. PHP comes with several ready-made ones:
             </p>
-            <table style="width:100%;border-collapse:collapse;font-size:0.9rem;margin-bottom:0.5rem;">
+            <table class="attributes-table">
                 <thead>
-                    <tr style="background:#f1f5f9;text-align:left;">
-                        <th style="padding:8px 12px;border:1px solid #e2e8f0;">Attribute</th>
-                        <th style="padding:8px 12px;border:1px solid #e2e8f0;">Since</th>
-                        <th style="padding:8px 12px;border:1px solid #e2e8f0;">What it does</th>
+                    <tr class="attributes-table__head">
+                        <th>Attribute</th>
+                        <th>Since</th>
+                        <th>What it does</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
-                        <td style="padding:8px 12px;border:1px solid #e2e8f0;"><code>#[Attribute]</code></td>
-                        <td style="padding:8px 12px;border:1px solid #e2e8f0;">8.0</td>
-                        <td style="padding:8px 12px;border:1px solid #e2e8f0;">Marks a class so it can be used as a custom attribute</td>
+                        <td><code>#[Attribute]</code></td>
+                        <td>8.0</td>
+                        <td>Marks a class so it can be used as a custom attribute</td>
                     </tr>
-                    <tr style="background:#f8fafc;">
-                        <td style="padding:8px 12px;border:1px solid #e2e8f0;"><code>#[SensitiveParameter]</code></td>
-                        <td style="padding:8px 12px;border:1px solid #e2e8f0;">8.2</td>
-                        <td style="padding:8px 12px;border:1px solid #e2e8f0;">Hides a parameter's value in stack traces — great for passwords</td>
-                    </tr>
-                    <tr>
-                        <td style="padding:8px 12px;border:1px solid #e2e8f0;"><code>#[Override]</code></td>
-                        <td style="padding:8px 12px;border:1px solid #e2e8f0;">8.3</td>
-                        <td style="padding:8px 12px;border:1px solid #e2e8f0;">Documents that a method intentionally overrides a parent — PHP throws a compile error if the parent method ever disappears</td>
-                    </tr>
-                    <tr style="background:#f8fafc;">
-                        <td style="padding:8px 12px;border:1px solid #e2e8f0;"><code>#[\Deprecated]</code></td>
-                        <td style="padding:8px 12px;border:1px solid #e2e8f0;">8.4</td>
-                        <td style="padding:8px 12px;border:1px solid #e2e8f0;">Marks a function or method as deprecated — PHP itself will emit a deprecation notice when it's called</td>
+                    <tr class="attributes-table__row--alt">
+                        <td><code>#[SensitiveParameter]</code></td>
+                        <td>8.2</td>
+                        <td>Hides a parameter's value in stack traces — great for passwords</td>
                     </tr>
                     <tr>
-                        <td style="padding:8px 12px;border:1px solid #e2e8f0;"><code>#[NoDiscard]</code></td>
-                        <td style="padding:8px 12px;border:1px solid #e2e8f0;">8.5</td>
-                        <td style="padding:8px 12px;border:1px solid #e2e8f0;">Warns when a function's return value is silently ignored — useful for functions like <code>getUserById()</code> where ignoring the result is almost certainly a bug</td>
+                        <td><code>#[Override]</code></td>
+                        <td>8.3</td>
+                        <td>Documents that a method intentionally overrides a parent — PHP throws a compile error if the parent method ever disappears</td>
+                    </tr>
+                    <tr class="attributes-table__row--alt">
+                        <td><code>#[\Deprecated]</code></td>
+                        <td>8.4</td>
+                        <td>Marks a function or method as deprecated — PHP itself will emit a deprecation notice when it's called</td>
+                    </tr>
+                    <tr>
+                        <td><code>#[NoDiscard]</code></td>
+                        <td>8.5</td>
+                        <td>Warns when a function's return value is silently ignored — useful for functions like <code>getUserById()</code> where ignoring the result is almost certainly a bug</td>
                     </tr>
                 </tbody>
             </table>
@@ -366,14 +366,14 @@ echo PHP_EOL;
                     Finally, uncomment the Reflection block to print the routing table.
                 </li>
                 <li>
-                    <strong>Guard a return value with <code>#[NoDiscard]</code>. <span class="version-badge v85" style="font-size:0.65rem;padding:2px 8px;">PHP 8.5</span></strong>
+                    <strong>Guard a return value with <code>#[NoDiscard]</code>. <span class="version-badge v85 version-badge--compact">PHP 8.5</span></strong>
                     Add <code>#[NoDiscard('return value should not be ignored')]</code> above
                     <code>getUserById()</code>.
                     Run the file — the call on the first line (result discarded) will emit a notice;
                     the second call (result assigned to <code>$user</code>) stays silent.
                 </li>
                 <li>
-                    <strong>Delay target validation. <span class="version-badge v85" style="font-size:0.65rem;padding:2px 8px;">PHP 8.5</span></strong>
+                    <strong>Delay target validation. <span class="version-badge v85 version-badge--compact">PHP 8.5</span></strong>
                     Update your <code>Route</code> attribute declaration to use
                     <code>Attribute::TARGET_METHOD | Attribute::DELAYED_TARGET_VALIDATION</code>.
                     Then add <code>#[Route('/bad')]</code> on a property of <code>ApiController</code>
@@ -561,7 +561,7 @@ echo '5. Fetched user: ' . $user['name'] . PHP_EOL;
                 </div><!-- /.solution-code -->
             </details>
 
-            <div class="rules-box" style="margin-top:1rem;">
+            <div class="rules-box rules-box--mt-1">
                 <strong>🧪 Think about it:</strong>
                 Attributes are read lazily — <code>getAttributes()</code> returns
                 <code>ReflectionAttribute</code> objects, and the attribute class is only instantiated when

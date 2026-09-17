@@ -93,7 +93,7 @@
 </header>
 
 <main class="container">
-    <nav class="exercise-nav" style="margin-bottom:1.5rem;">
+    <nav class="exercise-nav">
         <a href="/workshops/" class="exercise-nav-link"><i class="fas fa-arrow-left"></i> All Workshops</a>
         <span class="exercise-nav-position">Hack, Fix, Discuss! — July 2, 2026</span>
     </nav>
@@ -115,30 +115,30 @@
             
             <div class="rules-box">
                 <strong>Workshop Structure (The "Duel" Cycle):</strong>
-                <div style="margin-top: 1rem;">
-                    <div style="display: flex; align-items: flex-start; margin-bottom: 1.2rem;">
-                        <div style="background: #1b8e2d; color: white; border-radius: 50%; width: 28px; height: 28px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-right: 12px; font-weight: bold; font-size: 0.9rem;">1</div>
+                <div class="duel-steps">
+                    <div class="duel-step">
+                        <div class="duel-step__number">1</div>
                         <div>
                             <strong>Hack & Fix (In Parallel)</strong>
-                            <div style="font-size: 0.9rem; color: #2d3748; margin-top: 0.4rem; line-height: 1.5;">
-                                <span style="display: flex; align-items: center; margin-bottom: 4px;"><i class="fas fa-user-secret" style="color:#e53e3e; width: 20px; margin-right: 8px;"></i> <strong>Team Red:</strong> Find and exploit vulnerabilities in the code.</span>
-                                <span style="display: flex; align-items: center;"><i class="fas fa-shield-alt" style="color:#3182ce; width: 20px; margin-right: 8px;"></i> <strong>Team Blue:</strong> Audit and patch the same code to secure it.</span>
-                                <em style="display: block; margin-top: 4px; color: #555; font-size: 0.85rem;">Both teams work simultaneously on the same challenge!</em>
+                            <div class="duel-step__details">
+                                <span class="duel-step__team duel-step__team--spaced"><i class="fas fa-user-secret duel-step__icon duel-step__icon--hack"></i> <strong>Team Red:</strong> Find and exploit vulnerabilities in the code.</span>
+                                <span class="duel-step__team"><i class="fas fa-shield-alt duel-step__icon duel-step__icon--fix"></i> <strong>Team Blue:</strong> Audit and patch the same code to secure it.</span>
+                                <em class="duel-step__note">Both teams work simultaneously on the same challenge!</em>
                             </div>
                         </div>
                     </div>
-                    <div style="display: flex; align-items: flex-start; margin-bottom: 1.2rem;">
-                        <div style="background: #1b8e2d; color: white; border-radius: 50%; width: 28px; height: 28px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-right: 12px; font-weight: bold; font-size: 0.9rem;">2</div>
+                    <div class="duel-step">
+                        <div class="duel-step__number">2</div>
                         <div>
                             <strong>The "Showdown" & Discuss</strong>
-                            <p style="font-size: 0.9rem; color: #2d3748; margin-top: 0.4rem; line-height: 1.5;">We test Team Red's payloads against Team Blue's fixed code. Then we discuss why the AI failed and how the fix works.</p>
+                            <p class="duel-step__details">We test Team Red's payloads against Team Blue's fixed code. Then we discuss why the AI failed and how the fix works.</p>
                         </div>
                     </div>
-                    <div style="display: flex; align-items: flex-start;">
-                        <div style="background: #1b8e2d; color: white; border-radius: 50%; width: 28px; height: 28px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-right: 12px; font-weight: bold; font-size: 0.9rem;">3</div>
+                    <div class="duel-step">
+                        <div class="duel-step__number">3</div>
                         <div>
                             <strong>Repeat & Switch</strong>
-                            <p style="font-size: 0.9rem; color: #2d3748; margin-top: 0.4rem; line-height: 1.5;">Move to the next challenge, switch roles between Team Red and Team Blue, and start the next round!</p>
+                            <p class="duel-step__details">Move to the next challenge, switch roles between Team Red and Team Blue, and start the next round!</p>
                         </div>
                     </div>
                 </div>

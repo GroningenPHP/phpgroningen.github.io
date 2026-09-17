@@ -84,6 +84,66 @@
     border-radius: 0 4px 4px 0;
 }
 
+.duel-steps {
+    margin-top: 1rem;
+}
+
+.duel-step {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 1.2rem;
+}
+
+.duel-step:last-child {
+    margin-bottom: 0;
+}
+
+.duel-step__number {
+    background: #1b8e2d;
+    color: white;
+    border-radius: 50%;
+    width: 28px;
+    height: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    margin-right: 12px;
+    font-weight: bold;
+    font-size: 0.9rem;
+}
+
+.duel-step__details {
+    font-size: 0.9rem;
+    color: #2d3748;
+    margin-top: 0.4rem;
+    line-height: 1.5;
+}
+
+.duel-step__team {
+    display: flex;
+    align-items: center;
+}
+
+.duel-step__team--spaced {
+    margin-bottom: 4px;
+}
+
+.duel-step__icon {
+    width: 20px;
+    margin-right: 8px;
+}
+
+.duel-step__icon--hack { color: #e53e3e; }
+.duel-step__icon--fix { color: #3182ce; }
+
+.duel-step__note {
+    display: block;
+    margin-top: 4px;
+    color: #555;
+    font-size: 0.85rem;
+}
+
 /* Sandbox Banner */
 .sandbox-banner {
     display: flex;

@@ -49,7 +49,7 @@
 </header>
 
 <main class="container">
-    <nav class="exercise-nav" style="margin-bottom:1.5rem;">
+    <nav class="exercise-nav">
         <a href="./" class="exercise-nav-link"><i class="fas fa-arrow-left"></i> Back to overview</a>
         <span class="exercise-nav-position">Challenge 2 of 4</span>
         <a href="challenge-3.html" class="exercise-nav-link">Challenge 3 <i class="fas fa-arrow-right"></i></a>
@@ -121,7 +121,7 @@ if (preg_match('/Calculate (.*)/i', $prompt, $matches)) {
                     <strong>Goal:</strong> Prevent Remote Code Execution (RCE).
                 </div>
                 <p>The AI's "parser" just passes strings directly to <code>eval()</code>. This is extremely dangerous. Patch the logic to only allow mathematical results.</p>
-                <p style="margin-top: auto;"><small><i class="fas fa-lightbulb"></i> Tip: Use a whitelist of characters or a dedicated math evaluation library instead of <code>eval()</code>.</small></p>
+                <p class="tip-tail"><small><i class="fas fa-lightbulb"></i> Tip: Use a whitelist of characters or a dedicated math evaluation library instead of <code>eval()</code>.</small></p>
             </div>
         </div>
     </section>

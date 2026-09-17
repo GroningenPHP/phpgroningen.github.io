@@ -66,10 +66,9 @@ document.addEventListener('DOMContentLoaded', function() {
     }, observerOptions);
 
     // Observe elements for animation
-    document.querySelectorAll('.sponsor-card, .event-card, .stat-card').forEach(el => {
+    document.querySelectorAll('sponsor-card, .event-card, .stat-card').forEach(el => {
         el.style.opacity = '0';
-        el.style.transform = 'translateY(20px)';
-        el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+        el.style.transition = 'opacity 0.6s ease';
         observer.observe(el);
     });
 
@@ -114,7 +113,8 @@ document.addEventListener('DOMContentLoaded', function() {
 document.addEventListener('DOMContentLoaded', function() {
     const carousel = document.getElementById('sponsorCarousel');
     const slides = document.querySelectorAll('.sponsor-slide');
-    const indicators = document.querySelectorAll('.indicator');
+    const indicatorsContainer = document.querySelector('.carousel-indicators');
+    let indicators = Array.from(document.querySelectorAll('.indicator'));
     const prevBtn = document.getElementById('prevBtn');
     const nextBtn = document.getElementById('nextBtn');
 
@@ -128,6 +128,24 @@ document.addEventListener('DOMContentLoaded', function() {
     let autoSlideInterval;
     let isTransitioning = false;
     let totalSlides = slides.length;
+
+    // Keep indicators in sync with the amount of real slides.
+    if (indicatorsContainer) {
+        while (indicators.length > totalSlides) {
+            indicators.pop()?.remove();
+        }
+
+        while (indicators.length < totalSlides) {
+            const indicator = document.createElement('span');
+            indicator.className = 'indicator';
+            indicatorsContainer.appendChild(indicator);
+            indicators.push(indicator);
+        }
+
+        indicators.forEach((indicator, index) => {
+            indicator.dataset.slide = String(index);
+        });
+    }
 
     // Clone slides for infinite effect
     function setupInfiniteCarousel() {
