@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GroningenPHP - Spec-Driven Development Workshop</title>
+    <link rel="stylesheet" href="../../css/styles.css">
+    <link rel="stylesheet" href="../../css/ai-powered.css">
+    <link rel="stylesheet" href="../../css/php-workshop.css">
+    <link rel="icon" href="../../favicon.ico" type="image/x-icon" sizes="any"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="shortcut icon" href="../../favicon.ico"/>
+    <link rel="stylesheet" href="../../css/sdd.css">
+</head>
+<body>
+<header class="header">
+    <nav class="nav">
+        <div class="nav-container">
+            <a class="logo" href="/index.html">
+                <img src="../../images/GroningenPHP-LOGO.png" alt="GroningenPHP Logo" class="logo-image">
+                <h1>GroningenPHP</h1>
+            </a>
+            <ul class="nav-menu">
+                <li><a href="/index.html#home">Home</a></li>
+                <li><a href="/index.html#about">About</a></li>
+                <li><a href="/index.html#events">Events</a></li>
+                <li><a href="/index.html#sponsors">Sponsors</a></li>
+                <li><a href="/index.html#contact">Contact</a></li>
+                <li><a href="/workshops/" class="active">Workshops</a></li>
+            </ul>
+            <div class="social-links">
+                <a href="https://www.youtube.com/@GroningenPHP/videos" target="_blank" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                <a href="https://x.com/groningenphp/" target="_blank" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                <a href="https://www.linkedin.com/groups/13836983/" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+            </div>
+            <div class="hamburger"><span></span><span></span><span></span></div>
+        </div>
+    </nav>
+</header>
+
+<main class="container">
+    <nav class="exercise-nav">
+        <a href="/workshops/" class="exercise-nav-link"><i class="fas fa-arrow-left"></i> All Workshops</a>
+        <span class="exercise-nav-position">Spec-Driven Development — Oct 1, 2026</span>
+    </nav>
+
+    <div class="chat-banner">
+        <div class="chat-banner__text">
+            <span class="chat-banner__icon">💬</span>
+            <span><strong>Workshop Chat</strong> — share your spec, plan and screenshots live. Ask the host for the PIN or scan the QR code on the beamer.</span>
+        </div>
+        <a href="/chat/" class="chat-banner__link"><i class="fas fa-comments"></i> Join Chat</a>
+    </div>
+
+    <section class="intro-section">
+        <h2>🧭 Spec-Driven Development <span class="workshop-date-badge">Oct 1, 2026</span></h2>
+        <div class="instruction-box">
+            <p class="lead">From vibe-coding to a repeatable workflow. Today you'll start a real project the spec-driven way: settle the <strong>problem</strong>, the <strong>plan</strong>, and what counts as <strong>done</strong> — before any code exists — then let an AI agent build it.</p>
+            <p>Pick one of two fun cases and build it end to end. Beginners can follow the guided happy path step by step; experienced devs treat the MVP as a warm-up and chase the stretch goals. <strong>Facilitators are here the whole time</strong> — wave one over whenever you're stuck.</p>
+            <div class="rules-box">
+                <strong>No paid AI subscription needed.</strong> We use <a href="https://opencode.ai" target="_blank">OpenCode</a> (free &amp; open source) with a free model provider. Get set up in ~15 minutes on the setup page.
+            </div>
+            <p><small>📅 Part of the GroningenPHP meetup on Thu, Oct 1, 2026 · doors 19:30 — <a href="https://www.meetup.com/groningenphp/events/316384127/" target="_blank">event details &amp; RSVP</a>.</small></p>
+        </div>
+    </section>
+
+    <!-- Setup CTA -->
+    <section class="prompts-section">
+        <div class="sandbox-banner">
+            <div class="sandbox-banner__text">
+                <span class="sandbox-banner__icon">⚙️</span>
+                <span><strong>First time here?</strong> Install the free tooling first — OpenCode plus a free model, on Ubuntu or Windows.</span>
+            </div>
+            <a href="setup.html" class="sandbox-banner__link"><i class="fas fa-download"></i> Open Setup Guide</a>
+        </div>
+    </section>
+
+    <hr class="divider">
+
+    <!-- Choose a case -->
+    <section class="prompts-section">
+        <h2>1 · Choose your case</h2>
+        <p class="subtext subtext--left">Both run the exact same spec-driven arc — pick whichever sounds more fun.</p>
+        <div class="sdd-cases">
+            <a href="case-trivia.html" class="sdd-case-card">
+                <div class="sdd-case-card__emoji">🧠</div>
+                <h3>Trivia App</h3>
+                <p>A Kahoot-style quiz people join from a meeting with a code. Seeded categories, custom questions, live scoring.</p>
+                <span class="sdd-case-card__cta">Start Case A <i class="fas fa-arrow-right"></i></span>
+            </a>
+            <a href="case-sequencer.html" class="sdd-case-card">
+                <div class="sdd-case-card__emoji">🎛️</div>
+                <h3>Interactive Music Sequencer</h3>
+                <p>A browser beat-machine: toggle drums, vocals, melody and rhythms on and off with clear buttons and sliders.</p>
+                <span class="sdd-case-card__cta">Start Case B <i class="fas fa-arrow-right"></i></span>
+            </a>
+        </div>
+    </section>
+
+    <hr class="divider">
+
+    <!-- The flow -->
+    <section class="prompts-section">
+        <h2>2 · The flow, seven beats</h2>
+        <p class="subtext subtext--left">The first four steps happen <strong>before any code exists</strong>. That's the whole idea.</p>
+        <ol class="sdd-arc">
+            <li><span class="sdd-arc__n">1</span><strong>Intent</strong><small>what problem</small></li>
+            <li><span class="sdd-arc__n">2</span><strong>Spec</strong><small>what &amp; why</small></li>
+            <li><span class="sdd-arc__n">3</span><strong>Plan</strong><small>how, grounded</small></li>
+            <li><span class="sdd-arc__n">4</span><strong>Tasks</strong><small>units of work</small></li>
+            <li><span class="sdd-arc__n">5</span><strong>Implement</strong><small>agent writes</small></li>
+            <li><span class="sdd-arc__n">6</span><strong>Verify</strong><small>checks gate it</small></li>
+            <li><span class="sdd-arc__n">7</span><strong>Review</strong><small>a human reads</small></li>
+        </ol>
+        <div class="instruction-box" style="margin-top:1.25rem;">
+            <p><strong>Kickoff checkpoints</strong> the facilitators will look for as you go:</p>
+            <ul class="tips-list">
+                <li>You picked a case and can say what it is in one sentence.</li>
+                <li>You wrote <code>spec.md</code> — <em>what &amp; why</em>, no code — before building.</li>
+                <li>You got your <code>plan.md</code> signed off before writing code.</li>
+                <li>You hit a wrong assumption and fixed it in the plan, cheaply.</li>
+                <li>You made one rule enforceable with a real check.</li>
+            </ul>
+        </div>
+    </section>
+
+    <hr class="divider">
+
+    <!-- Four artifacts -->
+    <section class="prompts-section">
+        <h2>3 · One vocabulary — four artifacts</h2>
+        <p class="subtext subtext--left">Five independent frameworks (GitHub Spec Kit, AWS Kiro, BMAD, OpenSpec, Superpowers) all reinvented the same four files. They're files in the repo the agent reads every session — not a chat that vanishes.</p>
+        <div class="sdd-artifacts">
+            <div class="sdd-artifact">
+                <h4>Constitution</h4>
+                <p>The rules that don't change per feature — how you commit, what needs a human "yes". Written once, read every session.</p>
+            </div>
+            <div class="sdd-artifact">
+                <h4>Spec <code>spec.md</code></h4>
+                <p>What &amp; why. The problem, the decision, the boundaries. No implementation.</p>
+            </div>
+            <div class="sdd-artifact">
+                <h4>Plan <code>plan.md</code></h4>
+                <p>How, grounded in the codebase. Which files, which order, and the check that proves it worked.</p>
+            </div>
+            <div class="sdd-artifact">
+                <h4>Tasks</h4>
+                <p>Units an agent can execute and a human can tick off.</p>
+            </div>
+        </div>
+    </section>
+
+    <hr class="divider">
+
+    <!-- When worth it -->
+    <section class="prompts-section">
+        <h2>4 · When is it worth the ceremony?</h2>
+        <div class="instruction-box">
+            <p>Spec-driven development earns its keep for <strong>auditability</strong> (what was decided, not just what changed), <strong>governance</strong> (one file people and agents both read), and <strong>parallelisation</strong> (agents in parallel need contracts that don't overlap).</p>
+            <p>It is <em>not</em> for prototypes, one-line fixes, or exploration.</p>
+            <p class="sdd-quote">Simple tasks need a prompt. Complex ones need a spec. Writing the decision down turns a six-month bet into an experiment you can fail in an afternoon.</p>
+            <p><small>This workshop is based on the GroningenPHP talk <em>"Spec-Driven Development: from vibe-coding to integrating AI coding assistants into the software development lifecycle."</em></small></p>
+        </div>
+    </section>
+
+    <hr class="divider">
+
+    <!-- Take-home -->
+    <section class="prompts-section">
+        <h2>5 · Take it home</h2>
+        <div class="instruction-box">
+            <p>Today you'll do spec-driven development by hand. To keep doing it on your own projects, there's a free tool that gives it structure and a repeatable lifecycle — <strong>OpenSpec</strong>. The take-home guide walks you through install → propose → apply → archive, and points at the real change that built this very workshop.</p>
+            <p><a href="next-project.html" class="sdd-download"><i class="fas fa-rocket"></i> Use this on your next project</a></p>
+        </div>
+    </section>
+
+    <nav class="exercise-nav exercise-nav--bottom">
+        <a href="setup.html" class="exercise-nav-link"><i class="fas fa-download"></i> Setup guide</a>
+        <a href="case-trivia.html" class="exercise-nav-link exercise-nav-link--next">Pick a case &amp; start <i class="fas fa-arrow-right"></i></a>
+    </nav>
+</main>
+
+<footer class="footer">
+    <div class="container">
+        <div class="footer-content">
+            <div class="footer-section">
+                <div class="footer-logo">
+                    <img src="../../images/GroningenPHP-LOGO.png" alt="GroningenPHP Logo" class="footer-logo-image">
+                    <h3>GroningenPHP</h3>
+                </div>
+                <p>PHP developers in Groningen meeting, sharing knowledge, and having fun!</p>
+            </div>
+            <div class="footer-section">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="/index.html#about">About</a></li>
+                    <li><a href="/index.html#events">Events</a></li>
+                    <li><a href="/workshops/">Workshops</a></li>
+                    <li><a href="/index.html#sponsors">Sponsors</a></li>
+                    <li><a href="/index.html#contact">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Connect</h4>
+                <div class="footer-social">
+                    <a href="https://www.meetup.com/groningenphp/" target="_blank"><i class="fas fa-calendar"></i></a>
+                    <a href="https://www.youtube.com/@GroningenPHP/videos" target="_blank"><i class="fab fa-youtube"></i></a>
+                    <a href="https://x.com/groningenphp/" target="_blank"><i class="fab fa-twitter"></i></a>
+                    <a href="https://www.linkedin.com/groups/13836983/" target="_blank"><i class="fab fa-linkedin"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; <span id="current-year">2026</span> GroningenPHP. All rights reserved.</p>
+        </div>
+    </div>
+</footer>
+
+<script src="../../js/script.js"></script>
+</body>
+</html>

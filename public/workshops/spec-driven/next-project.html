@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GroningenPHP - Spec-Driven Development: Use it on your next project</title>
+    <link rel="stylesheet" href="../../css/styles.css">
+    <link rel="stylesheet" href="../../css/ai-powered.css">
+    <link rel="stylesheet" href="../../css/php-workshop.css">
+    <link rel="icon" href="../../favicon.ico" type="image/x-icon" sizes="any"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="shortcut icon" href="../../favicon.ico"/>
+    <link rel="stylesheet" href="../../css/sdd.css">
+</head>
+<body>
+<header class="header">
+    <nav class="nav">
+        <div class="nav-container">
+            <a class="logo" href="/index.html">
+                <img src="../../images/GroningenPHP-LOGO.png" alt="GroningenPHP Logo" class="logo-image">
+                <h1>GroningenPHP</h1>
+            </a>
+            <ul class="nav-menu">
+                <li><a href="/index.html#home">Home</a></li>
+                <li><a href="/index.html#about">About</a></li>
+                <li><a href="/index.html#events">Events</a></li>
+                <li><a href="/index.html#sponsors">Sponsors</a></li>
+                <li><a href="/index.html#contact">Contact</a></li>
+                <li><a href="/workshops/" class="active">Workshops</a></li>
+            </ul>
+            <div class="social-links">
+                <a href="https://www.youtube.com/@GroningenPHP/videos" target="_blank" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                <a href="https://x.com/groningenphp/" target="_blank" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                <a href="https://www.linkedin.com/groups/13836983/" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+            </div>
+            <div class="hamburger"><span></span><span></span><span></span></div>
+        </div>
+    </nav>
+</header>
+
+<main class="container">
+    <nav class="exercise-nav">
+        <a href="./" class="exercise-nav-link"><i class="fas fa-arrow-left"></i> Back to overview</a>
+        <span class="exercise-nav-position">Take-home · Your next project</span>
+        <a href="setup.html" class="exercise-nav-link">Setup <i class="fas fa-arrow-right"></i></a>
+    </nav>
+
+    <section class="intro-section">
+        <h2>🚀 Use this on your next project <span class="workshop-date-badge">Take-home</span></h2>
+        <div class="instruction-box">
+            <p class="lead">In the workshop you did spec-driven development <strong>by hand</strong> — you settled the problem, wrote a spec and a plan as files, got sign-off before code, and corrected a wrong plan cheaply. This page hands you the tool that does exactly that, with structure and a repeatable lifecycle: <strong>OpenSpec</strong>.</p>
+            <p class="subtext subtext--left">You can follow this on your own, at your own pace — <strong>it doesn't depend on anything you saw on the beamer.</strong> Everything you need is right here.</p>
+        </div>
+    </section>
+
+    <hr class="divider">
+
+    <!-- Why OpenSpec -->
+    <section class="prompts-section">
+        <h2>1 · Why OpenSpec (and not something heavier)</h2>
+        <div class="instruction-box">
+            <p>Five frameworks reinvented the same four files. OpenSpec is the one we reach for because it fits how you already work:</p>
+            <ul>
+                <li><strong>One install, no second runtime.</strong> It's a single Node CLI — no Python/<code>uv</code> toolchain to set up first.</li>
+                <li><strong>It plugs straight into OpenCode</strong> (the free agent from the workshop) with one command.</li>
+                <li><strong>It leaves a paper trail</strong> — every change is a set of files in your repo the agent reads each session, not a chat that vanishes.</li>
+            </ul>
+            <p class="subtext subtext--left">OpenSpec doesn't replace the fundamentals — it <em>operationalises</em> them. Everything below maps 1:1 to what you already did by hand.</p>
+        </div>
+    </section>
+
+    <hr class="divider">
+
+    <!-- Install -->
+    <section class="prompts-section">
+        <h2>2 · Install &amp; wire it to OpenCode</h2>
+        <p class="subtext subtext--left">Works the same on Ubuntu, macOS and Windows — it's just Node. You need Node.js 18+ (the same prerequisite OpenCode uses).</p>
+
+        <div class="instruction-box">
+            <p><strong>Install the CLI</strong> (global):</p>
+            <div class="sdd-code" id="np-install"><span class="copy-badge" onclick="copyCode('np-install')"><i class="fas fa-copy"></i> Copy</span><pre><code>npm install -g openspec
+openspec --version</code></pre></div>
+
+            <p><strong>Initialise it in your project</strong> and wire the OpenCode agent in one step:</p>
+            <div class="sdd-code" id="np-init"><span class="copy-badge" onclick="copyCode('np-init')"><i class="fas fa-copy"></i> Copy</span><pre><code>cd your-project
+openspec init --tools opencode</code></pre></div>
+            <p class="subtext subtext--left">This creates an <code>openspec/</code> folder and drops slash-commands into OpenCode, so the agent knows how to propose, apply and archive changes. Open OpenCode in the same folder and the commands are there.</p>
+        </div>
+    </section>
+
+    <hr class="divider">
+
+    <!-- Lifecycle -->
+    <section class="prompts-section">
+        <h2>3 · The lifecycle — the same three moves, every time</h2>
+        <p class="subtext subtext--left">You already know these; OpenSpec just gives them names and a place to live.</p>
+        <div class="sdd-lifecycle">
+            <div class="sdd-lifecycle__step">
+                <h4>① Propose</h4>
+                <p>Describe <em>what</em> and <em>why</em>. OpenSpec writes a <code>proposal</code>, a <code>design</code>, spec requirements and a <code>tasks</code> list — your spec + plan, before code. <strong>Review here</strong> — changing your mind costs a paragraph.</p>
+            </div>
+            <div class="sdd-lifecycle__step">
+                <h4>② Apply</h4>
+                <p>Work the <code>tasks</code> one by one with the agent, ticking <code>- [ ]</code> → <code>- [x]</code>. This is the build — grounded in files the agent re-reads each session.</p>
+            </div>
+            <div class="sdd-lifecycle__step">
+                <h4>③ Archive</h4>
+                <p><code>openspec archive</code> folds the change into your baseline specs. Your <code>specs/</code> become the living source of truth the <em>next</em> change builds on.</p>
+            </div>
+        </div>
+
+        <p class="subtext subtext--left">How it maps to the workshop, beat for beat:</p>
+        <div class="sdd-map">
+            <div class="sdd-map__row"><span class="sdd-map__hand">Wrote <code>spec.md</code> — what &amp; why</span><span class="sdd-map__arrow">→</span><span class="sdd-map__os"><code>proposal</code> + spec requirements</span></div>
+            <div class="sdd-map__row"><span class="sdd-map__hand">"Done means…" block</span><span class="sdd-map__arrow">→</span><span class="sdd-map__os">spec <code>#### Scenarios</code></span></div>
+            <div class="sdd-map__row"><span class="sdd-map__hand">Wrote <code>plan.md</code>, grounded</span><span class="sdd-map__arrow">→</span><span class="sdd-map__os"><code>design</code></span></div>
+            <div class="sdd-map__row"><span class="sdd-map__hand">Plan review gate before code</span><span class="sdd-map__arrow">→</span><span class="sdd-map__os">review the proposal before apply</span></div>
+            <div class="sdd-map__row"><span class="sdd-map__hand">Built task by task</span><span class="sdd-map__arrow">→</span><span class="sdd-map__os"><code>tasks</code> (<code>- [ ]</code> → <code>- [x]</code>)</span></div>
+            <div class="sdd-map__row"><span class="sdd-map__hand">Reflected · done vs not-done</span><span class="sdd-map__arrow">→</span><span class="sdd-map__os"><code>openspec archive</code> → baseline</span></div>
+        </div>
+    </section>
+
+    <hr class="divider">
+
+    <!-- Bridge concepts -->
+    <section class="prompts-section">
+        <h2>4 · Three ideas the lifecycle leans on</h2>
+        <p class="subtext subtext--left">The four artifacts you already know, plus these three, are everything OpenSpec is about. Get these and nothing feels like magic.</p>
+        <div class="sdd-bridge">
+            <div>
+                <h4>Change as a unit</h4>
+                <p>A change is one bounded piece of work — a proposal, its specs, its tasks — that you propose, apply, then archive. Not "some files", a discrete unit with a lifecycle.</p>
+            </div>
+            <div>
+                <h4>Delta specs</h4>
+                <p>A change says what's <strong>ADDED</strong>, <strong>MODIFIED</strong> or <strong>REMOVED</strong> against the current baseline — you don't rewrite the whole spec, you describe the diff.</p>
+            </div>
+            <div>
+                <h4>Archive to baseline</h4>
+                <p>Archiving folds the delta into your <code>specs/</code>, which become the source of truth. The next change starts from that updated baseline — the record compounds over the project.</p>
+            </div>
+        </div>
+    </section>
+
+    <hr class="divider">
+
+    <!-- Worked example -->
+    <section class="prompts-section">
+        <h2>5 · A real worked example to copy</h2>
+        <div class="instruction-box">
+            <p>This whole workshop — the pages you're reading right now — was built <strong>with OpenSpec</strong>. The change that produced it is in this very repository:</p>
+            <div class="sdd-code" id="np-example"><span class="copy-badge" onclick="copyCode('np-example')"><i class="fas fa-copy"></i> Copy</span><pre><code>openspec/changes/workshop-sdd/</code></pre></div>
+            <p>Open it and read a real, non-toy example front to back:</p>
+            <ul>
+                <li><code>proposal.md</code> — the problem and scope</li>
+                <li><code>design.md</code> — the decisions and trade-offs (including this take-home page)</li>
+                <li><code>specs/…/spec.md</code> — requirements with <code>#### Scenarios</code> (the "done" definition)</li>
+                <li><code>tasks.md</code> — the units of work, ticked off as they were built</li>
+            </ul>
+            <p class="subtext subtext--left">Steal the shape. Point your agent at it and say "structure my change like this one".</p>
+        </div>
+    </section>
+
+    <hr class="divider">
+
+    <!-- When -->
+    <section class="prompts-section">
+        <h2>6 · When to reach for it</h2>
+        <div class="instruction-box">
+            <p>Not every task needs a change. Use the full lifecycle when the work is worth <strong>auditability</strong>, <strong>governance</strong>, or <strong>parallelisation</strong>; skip it for prototypes, one-line fixes and exploration.</p>
+            <p class="sdd-quote">Simple tasks need a prompt. Complex ones need a spec.</p>
+        </div>
+    </section>
+
+    <nav class="exercise-nav exercise-nav--bottom">
+        <a href="case-trivia.html" class="exercise-nav-link"><i class="fas fa-arrow-left"></i> Back to the cases</a>
+        <a href="https://github.com/Fission-AI/OpenSpec" target="_blank" rel="noopener" class="exercise-nav-link exercise-nav-link--next">OpenSpec on GitHub <i class="fas fa-external-link-alt"></i></a>
+    </nav>
+</main>
+
+<div id="toast" class="toast">Copied to clipboard!</div>
+
+<footer class="footer">
+    <div class="container">
+        <div class="footer-content">
+            <div class="footer-section">
+                <div class="footer-logo">
+                    <img src="../../images/GroningenPHP-LOGO.png" alt="GroningenPHP Logo" class="footer-logo-image">
+                    <h3>GroningenPHP</h3>
+                </div>
+                <p>PHP developers in Groningen meeting, sharing knowledge, and having fun!</p>
+            </div>
+            <div class="footer-section">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="/index.html#about">About</a></li>
+                    <li><a href="/index.html#events">Events</a></li>
+                    <li><a href="/workshops/">Workshops</a></li>
+                    <li><a href="/index.html#sponsors">Sponsors</a></li>
+                    <li><a href="/index.html#contact">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Connect</h4>
+                <div class="footer-social">
+                    <a href="https://www.meetup.com/groningenphp/" target="_blank"><i class="fas fa-calendar"></i></a>
+                    <a href="https://www.youtube.com/@GroningenPHP/videos" target="_blank"><i class="fab fa-youtube"></i></a>
+                    <a href="https://x.com/groningenphp/" target="_blank"><i class="fab fa-twitter"></i></a>
+                    <a href="https://www.linkedin.com/groups/13836983/" target="_blank"><i class="fab fa-linkedin"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; <span id="current-year">2026</span> GroningenPHP. All rights reserved.</p>
+        </div>
+    </div>
+</footer>
+
+<script src="../../js/script.js"></script>
+<script src="../../js/hack-fix.js"></script>
+</body>
+</html>
