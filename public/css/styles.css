@@ -947,3 +947,32 @@ h1, h2, h3, h4, h5, h6 {
         font-size: 1.3rem;
     }
 }
+
+/* ==========================================================================
+   Inline content links — make prose links clearly clickable, site-wide.
+   Scoped to page content (<main>) plus a couple of homepage containers, and
+   only to anchors without a class, so button-style links (nav, cards, pills,
+   badges, CTAs) keep their own styling.
+   ========================================================================== */
+main a:not([class]),
+.organizers a:not([class]) {
+    color: #1b8e2d;
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 2px;
+    font-weight: 600;
+    transition: color 0.15s ease, text-decoration-thickness 0.15s ease;
+}
+
+main a:not([class]):hover,
+.organizers a:not([class]):hover {
+    color: #166124;
+    text-decoration-thickness: 2px;
+}
+
+main a:not([class]):focus-visible,
+.organizers a:not([class]):focus-visible {
+    outline: 2px solid #1b8e2d;
+    outline-offset: 2px;
+    border-radius: 2px;
+}

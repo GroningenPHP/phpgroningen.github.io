@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GroningenPHP - Spec-Driven Development: Setup</title>
+    <link rel="stylesheet" href="../../css/styles.css">
+    <link rel="stylesheet" href="../../css/ai-powered.css">
+    <link rel="stylesheet" href="../../css/php-workshop.css">
+    <link rel="icon" href="../../favicon.ico" type="image/x-icon" sizes="any"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="shortcut icon" href="../../favicon.ico"/>
+    <style>
+        .os-tabs { display: flex; gap: .5rem; margin: 1.5rem 0 1rem; flex-wrap: wrap; }
+        .os-tab-btn { background: #edf2f7; border: 1px solid #cbd5e0; color: #2d3748; padding: .5rem 1.1rem; border-radius: 6px; font-weight: 600; cursor: pointer; font-size: .95rem; }
+        .os-tab-btn.active { background: #1b8e2d; border-color: #1b8e2d; color: #fff; }
+        .os-panel { display: none; }
+        .os-panel.active { display: block; }
+        .step-list { counter-reset: step; list-style: none; padding: 0; margin: 1rem 0; }
+        .step-list > li { counter-increment: step; position: relative; padding: 0 0 1.25rem 3rem; border-left: 2px solid #e2e8f0; margin-left: 1rem; }
+        .step-list > li:last-child { border-left: 2px solid transparent; padding-bottom: 0; }
+        .step-list > li::before { content: counter(step); position: absolute; left: -1rem; top: -.2rem; width: 2rem; height: 2rem; background: #1b8e2d; color: #fff; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; }
+        .cmd { position: relative; background: #1a202c; color: #e2e8f0; border-radius: 8px; padding: .9rem 1rem; margin: .6rem 0; overflow-x: auto; }
+        .cmd pre { margin: 0; }
+        .cmd code { color: #e2e8f0; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: .9rem; }
+        .cmd .copy-badge { position: absolute; top: .5rem; right: .5rem; }
+        .model-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.25rem; margin: 1.25rem 0; }
+        .model-card { background: #fff; border-radius: 10px; padding: 1.25rem; box-shadow: 0 4px 6px -1px rgba(0,0,0,.1); border-top: 4px solid #cbd5e0; }
+        .model-card.default { border-top-color: #1b8e2d; }
+        .model-card h3 { margin: .2rem 0 .5rem; color: #2d3748; }
+        .model-badge { display: inline-block; font-size: .7rem; font-weight: 700; text-transform: uppercase; letter-spacing: .04em; padding: 2px 8px; border-radius: 999px; background: #edf2f7; color: #4a5568; }
+        .model-badge.default { background: #1b8e2d; color: #fff; }
+        .success-check { background: #f0fff4; border: 1px solid #9ae6b4; border-left: 5px solid #1b8e2d; border-radius: 8px; padding: 1rem 1.25rem; margin: 1.25rem 0; }
+        .success-check strong { color: #166124; }
+    </style>
+</head>
+<body>
+<header class="header">
+    <nav class="nav">
+        <div class="nav-container">
+            <a class="logo" href="/index.html">
+                <img src="../../images/GroningenPHP-LOGO.png" alt="GroningenPHP Logo" class="logo-image">
+                <h1>GroningenPHP</h1>
+            </a>
+            <ul class="nav-menu">
+                <li><a href="/index.html#home">Home</a></li>
+                <li><a href="/index.html#about">About</a></li>
+                <li><a href="/index.html#events">Events</a></li>
+                <li><a href="/index.html#sponsors">Sponsors</a></li>
+                <li><a href="/index.html#contact">Contact</a></li>
+                <li><a href="/workshops/" class="active">Workshops</a></li>
+            </ul>
+            <div class="social-links">
+                <a href="https://www.youtube.com/@GroningenPHP/videos" target="_blank" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                <a href="https://x.com/groningenphp/" target="_blank" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                <a href="https://www.linkedin.com/groups/13836983/" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+            </div>
+            <div class="hamburger"><span></span><span></span><span></span></div>
+        </div>
+    </nav>
+</header>
+
+<main class="container">
+    <nav class="exercise-nav">
+        <a href="./" class="exercise-nav-link"><i class="fas fa-arrow-left"></i> Back to overview</a>
+        <span class="exercise-nav-position">Setup — no paid subscription needed</span>
+    </nav>
+
+    <section class="intro-section">
+        <h2>Setup <span class="workshop-date-badge">~15 min</span></h2>
+        <div class="instruction-box">
+            <p class="lead">You need two things: a <strong>coding agent</strong> (the tool in your terminal) and a <strong>model</strong> (the brain it talks to). Both can be completely free — no paid LLM subscription required.</p>
+            <div class="rules-box">
+                <strong>The two layers:</strong> OpenCode is the free, open-source agent. It is model-agnostic, so you pick a free model provider below. Facilitators are here to help if anything gets stuck.
+            </div>
+        </div>
+    </section>
+
+    <hr class="divider">
+
+    <!-- ===== STEP 1: install OpenCode ===== -->
+    <section class="prompts-section">
+        <h2>1 · Install OpenCode (the agent)</h2>
+        <p class="subtext subtext--left">Pick your operating system.</p>
+
+        <div class="os-tabs" role="tablist">
+            <button class="os-tab-btn active" data-os="ubuntu">🐧 Ubuntu / Linux</button>
+            <button class="os-tab-btn" data-os="windows">🪟 Windows</button>
+        </div>
+
+        <div class="os-panel active" id="os-ubuntu">
+            <ol class="step-list">
+                <li>
+                    <strong>Install OpenCode</strong> with the official script:
+                    <div class="cmd" id="u-install"><span class="copy-badge" onclick="copyCode('u-install')"><i class="fas fa-copy"></i> Copy</span><pre><code>curl -fsSL https://opencode.ai/install | bash</code></pre></div>
+                    <p><small>Prefer npm? <code>npm install -g opencode-ai</code> works too (needs Node.js 18+).</small></p>
+                </li>
+                <li>
+                    <strong>Restart your terminal</strong>, then confirm it is on your <code>PATH</code>:
+                    <div class="cmd" id="u-verify"><span class="copy-badge" onclick="copyCode('u-verify')"><i class="fas fa-copy"></i> Copy</span><pre><code>opencode --version</code></pre></div>
+                </li>
+            </ol>
+        </div>
+
+        <div class="os-panel" id="os-windows">
+            <ol class="step-list">
+                <li>
+                    <strong>Install OpenCode</strong> with Scoop (recommended) …
+                    <div class="cmd" id="w-scoop"><span class="copy-badge" onclick="copyCode('w-scoop')"><i class="fas fa-copy"></i> Copy</span><pre><code>scoop install opencode</code></pre></div>
+                    … or with Chocolatey, or npm:
+                    <div class="cmd" id="w-choco"><span class="copy-badge" onclick="copyCode('w-choco')"><i class="fas fa-copy"></i> Copy</span><pre><code>choco install opencode
+# or
+npm install -g opencode-ai</code></pre></div>
+                    <p><small>No package manager? Grab the Windows binary from the <a href="https://github.com/anomalyco/opencode/releases" target="_blank">releases page</a>. Windows users often have the smoothest time inside <a href="https://learn.microsoft.com/windows/wsl/install" target="_blank">WSL2 (Ubuntu)</a> — if you use WSL, follow the Ubuntu tab instead.</small></p>
+                </li>
+                <li>
+                    <strong>Open a new terminal</strong> (PowerShell) and confirm:
+                    <div class="cmd" id="w-verify"><span class="copy-badge" onclick="copyCode('w-verify')"><i class="fas fa-copy"></i> Copy</span><pre><code>opencode --version</code></pre></div>
+                </li>
+            </ol>
+        </div>
+        <div style="margin-top:1.75rem;">
+            <h3 style="margin-bottom:.25rem;">Then add the file-tree plugin</h3>
+            <p class="subtext subtext--left">A navigable file tree in the sidebar so you can see and preview the specs and code as you work. Same command on Ubuntu and Windows.</p>
+            <ol class="step-list">
+                <li>
+                    <strong>Install it with OpenCode's built-in command.</strong> This is a <em>TUI plugin</em>, so let OpenCode wire it up — don't hand-edit the config. Run:
+                    <div class="cmd" id="ft-install"><span class="copy-badge" onclick="copyCode('ft-install')"><i class="fas fa-copy"></i> Copy</span><pre><code>opencode plugin --global opencode-file-tree</code></pre></div>
+                    <p><small>The command installs the package and registers it in the right place (a <code>tui.json</code> next to your config). Drop <code>--global</code> to add it to the current project only.</small></p>
+                </li>
+                <li>
+                    <strong>Restart OpenCode.</strong> The file tree appears in the sidebar — click a folder to expand it, click a file to preview it inline.
+                </li>
+            </ol>
+            <div class="rules-box" style="margin-top:1.25rem;">
+                <strong>Don't add it to <code>opencode.json</code> by hand.</strong> The top-level <code>"plugin"</code> array is for <em>server</em> plugins; putting a TUI plugin there fails to load (<code>must default export an object with server()</code>) and no sidebar appears. Always use the <code>opencode plugin</code> command above.
+            </div>
+        </div>
+    </section>
+
+    <hr class="divider">
+
+    <!-- ===== STEP 2: pick a free model ===== -->
+    <section class="prompts-section">
+        <h2>2 · Connect a free model (the brain)</h2>
+        <p class="subtext subtext--left">Choose <strong>one</strong>. Start with the default — the fallbacks are there if signup, connectivity, or your laptop get in the way.</p>
+
+        <div class="model-grid">
+            <div class="model-card default">
+                <span class="model-badge default">Default</span>
+                <h3>Google Gemini (free tier)</h3>
+                <p>Best quality-for-effort: one free API key, no special hardware.</p>
+                <ol class="step-list">
+                    <li>Get a free key at <a href="https://aistudio.google.com/apikey" target="_blank">aistudio.google.com/apikey</a> (Google account).</li>
+                    <li>In OpenCode run <code>/connect</code>, choose <strong>Google</strong>, paste the key.</li>
+                    <li>Run <code>/models</code> and pick <strong>Gemini 3.1 Flash Lite &mdash; medium</strong>. It gives reasonable results for this workshop while using few tokens, so you stay well inside the free tier.</li>
+                </ol>
+            </div>
+
+            <div class="model-card">
+                <span class="model-badge">Fallback A</span>
+                <h3>GitHub Copilot</h3>
+                <p>Already have Copilot (free for students &amp; OSS maintainers)? Zero setup.</p>
+                <ol class="step-list">
+                    <li>In OpenCode run <code>/connect</code>, choose <strong>GitHub Copilot</strong>.</li>
+                    <li>Open <a href="https://github.com/login/device" target="_blank">github.com/login/device</a> and enter the code shown.</li>
+                    <li>Run <code>/models</code> and pick a model.</li>
+                </ol>
+            </div>
+
+            <div class="model-card">
+                <span class="model-badge">Fallback B</span>
+                <h3>Local model (Ollama)</h3>
+                <p>Offline &amp; no signup. Needs a capable laptop (~8&nbsp;GB free RAM/VRAM).</p>
+                <ol class="step-list">
+                    <li>Install <a href="https://ollama.com/download" target="_blank">Ollama</a>, then pull a coding model:
+                        <div class="cmd" id="o-pull"><span class="copy-badge" onclick="copyCode('o-pull')"><i class="fas fa-copy"></i> Copy</span><pre><code>ollama pull qwen2.5-coder</code></pre></div>
+                    </li>
+                    <li>Point OpenCode at it via <code>opencode.json</code> (OpenAI-compatible endpoint):
+                        <div class="cmd" id="o-conf"><span class="copy-badge" onclick="copyCode('o-conf')"><i class="fas fa-copy"></i> Copy</span><pre><code>{
+  "$schema": "https://opencode.ai/config.json",
+  "provider": {
+    "ollama": {
+      "npm": "@ai-sdk/openai-compatible",
+      "name": "Ollama (local)",
+      "options": { "baseURL": "http://localhost:11434/v1" },
+      "models": { "qwen2.5-coder": { "name": "Qwen2.5 Coder" } }
+    }
+  }
+}</code></pre></div>
+                    </li>
+                    <li>Run <code>/models</code> and pick <em>Qwen2.5 Coder</em>.</li>
+                </ol>
+            </div>
+        </div>
+    </section>
+
+    <hr class="divider">
+
+    <!-- ===== STEP 3: readiness check ===== -->
+    <section class="prompts-section">
+        <h2>3 · Readiness check</h2>
+        <p class="subtext subtext--left">Navigate into any empty folder and start OpenCode:</p>
+        <div class="cmd" id="ready"><span class="copy-badge" onclick="copyCode('ready')"><i class="fas fa-copy"></i> Copy</span><pre><code>mkdir sdd-workshop && cd sdd-workshop
+opencode</code></pre></div>
+        <p>Type a message like <em>"Say hello and tell me which model you are."</em> and press Enter.</p>
+        <div class="success-check">
+            <strong>✅ You're ready when</strong> the agent replies in the terminal. Tip: press <strong>Tab</strong> to toggle <strong>Plan mode</strong> — you'll use it a lot today, because in spec-driven development we settle the plan before writing code.
+        </div>
+        <p class="troubleshoot">Stuck? Grab a facilitator, or ask the agent itself to help debug the setup once it responds.</p>
+    </section>
+
+    <nav class="exercise-nav exercise-nav--bottom">
+        <a href="./" class="exercise-nav-link"><i class="fas fa-arrow-left"></i> Back to overview</a>
+        <a href="case-trivia.html" class="exercise-nav-link exercise-nav-link--next">Pick a case <i class="fas fa-arrow-right"></i></a>
+    </nav>
+</main>
+
+<div id="toast" class="toast">Copied to clipboard!</div>
+
+<script src="../../js/script.js"></script>
+<script src="../../js/hack-fix.js"></script>
+<script>
+document.querySelectorAll('.os-tab-btn').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+        document.querySelectorAll('.os-tab-btn').forEach(b => b.classList.remove('active'));
+        document.querySelectorAll('.os-panel').forEach(p => p.classList.remove('active'));
+        btn.classList.add('active');
+        document.getElementById('os-' + btn.dataset.os).classList.add('active');
+    });
+});
+</script>
+</body>
+</html>

@@ -475,6 +475,8 @@ details .code-block {
     align-items: flex-start;
 }
 
+.workshop-card[hidden] { display: none !important; }
+
 .workshop-card:hover {
     border-color: #1b8e2d;
     box-shadow: 0 4px 20px rgba(27, 142, 45, 0.15);

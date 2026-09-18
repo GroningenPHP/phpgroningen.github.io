@@ -67,6 +67,34 @@
     </div>
 
     <div class="workshop-list">
+        <!-- Add future workshops above this comment (newest first) -->
+
+        <!-- === Oct 2026 — Spec-Driven Development ===
+             Hidden until 2 days before the meetup (Oct 1, 2026 19:30 CEST = 17:30 UTC).
+             The spec-driven/ page itself stays reachable by direct link before then. -->
+        <a href="spec-driven/" class="workshop-card workshop-card--ai" id="spec-driven-card" data-reveal-at="2026-09-29T17:30:00Z" hidden>
+            <div class="workshop-card__date">
+                <span class="workshop-card__month">Oct</span>
+                <span class="workshop-card__day">1</span>
+                <span class="workshop-card__year">2026</span>
+            </div>
+            <div class="workshop-card__body">
+                <div class="workshop-card__meta">
+                    <span class="version-badge workshop-card__badge--ai version-badge--ai">AI</span>
+                    <span class="workshop-card__exercises">2 cases</span>
+                </div>
+                <h3>🧭 Spec-Driven Development</h3>
+                <p>Start a real project the spec-driven way: settle the problem, the plan and what "done" means before any code exists, then let a free AI agent build it. Pick a Trivia app or an Interactive Music Sequencer. No paid AI subscription needed — beginner-friendly, with facilitators on hand.</p>
+                <div class="workshop-card__pills">
+                    <span class="feature-pill feature-pill--ai"><i class="fas fa-file-alt"></i> Spec &amp; Plan</span>
+                    <span class="feature-pill feature-pill--ai"><i class="fas fa-terminal"></i> OpenCode</span>
+                    <span class="feature-pill feature-pill--ai"><i class="fas fa-robot"></i> Free models</span>
+                    <span class="feature-pill feature-pill--ai"><i class="fas fa-vial"></i> Enforceable rules</span>
+                </div>
+                <span class="workshop-card__cta">Choose a case <i class="fas fa-arrow-right"></i></span>
+            </div>
+        </a>
+
         <!-- === July 2026 === -->
         <a href="hack-fix-discuss/" class="workshop-card">
             <div class="workshop-card__date">
@@ -149,8 +177,6 @@
             </div>
         </a>
 
-        <!-- Add future workshops above this comment -->
-
         <!-- === Jan 2026 — AI Coding Challenge === -->
         <a href="ai-powered/" class="workshop-card workshop-card--ai">
             <div class="workshop-card__date">
@@ -228,6 +254,15 @@
 <script src="../js/script.js"></script>
 <script>
 document.addEventListener('DOMContentLoaded', function () {
+    // Reveal date-gated workshop cards once their reveal time has passed.
+    // Before that they stay hidden here but remain reachable by direct link.
+    document.querySelectorAll('[data-reveal-at]').forEach(function (el) {
+        const revealAt = new Date(el.getAttribute('data-reveal-at'));
+        if (!isNaN(revealAt) && Date.now() >= revealAt.getTime()) {
+            el.hidden = false;
+        }
+    });
+
     const ctfCard = document.getElementById('ctf-card');
     const overlay = document.getElementById('ctf-offline-overlay');
     const closeBtn = document.getElementById('ctf-overlay-close');

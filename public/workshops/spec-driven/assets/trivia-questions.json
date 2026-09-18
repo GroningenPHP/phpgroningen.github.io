@@ -1,0 +1,77 @@
+{
+  "$comment": "Seeded questions for the GroningenPHP Spec-Driven Development workshop — Trivia case. 8 categories. Correct answer index is 0-based into 'options'.",
+  "categories": [
+    {
+      "name": "PHP Basics",
+      "questions": [
+        { "q": "Which symbol starts every PHP variable?", "options": ["$", "@", "#", "&"], "answer": 0, "points": 100 },
+        { "q": "What does the '.' operator do in PHP?", "options": ["Concatenates strings", "Adds numbers", "Compares values", "Ends a statement"], "answer": 0, "points": 100 },
+        { "q": "Which function outputs text in PHP?", "options": ["echo", "print_r only", "write", "console.log"], "answer": 0, "points": 100 },
+        { "q": "What file extension do PHP scripts usually use?", "options": [".php", ".ph", ".phtm", ".p"], "answer": 0, "points": 100 }
+      ]
+    },
+    {
+      "name": "Web & HTTP",
+      "questions": [
+        { "q": "Which HTTP method is typically used to submit a form that changes data?", "options": ["POST", "GET", "HEAD", "TRACE"], "answer": 0, "points": 100 },
+        { "q": "What status code means 'Not Found'?", "options": ["404", "200", "500", "301"], "answer": 0, "points": 100 },
+        { "q": "Which PHP superglobal holds query-string parameters?", "options": ["$_GET", "$_POST", "$_ENV", "$_FILES"], "answer": 0, "points": 100 },
+        { "q": "What does HTTPS add over HTTP?", "options": ["Encryption in transit", "Faster DNS", "Bigger cookies", "More status codes"], "answer": 0, "points": 100 }
+      ]
+    },
+    {
+      "name": "Databases & SQL",
+      "questions": [
+        { "q": "Which SQL keyword retrieves rows?", "options": ["SELECT", "FETCH", "PULL", "READ"], "answer": 0, "points": 100 },
+        { "q": "What prevents SQL injection when using PDO?", "options": ["Prepared statements", "str_replace of quotes", "Uppercasing input", "Removing spaces"], "answer": 0, "points": 100 },
+        { "q": "Which clause filters grouped results?", "options": ["HAVING", "WHERE", "ORDER BY", "LIMIT"], "answer": 0, "points": 100 },
+        { "q": "A primary key must be...", "options": ["Unique and not null", "Always an integer", "The first column", "Auto-incrementing"], "answer": 0, "points": 100 }
+      ]
+    },
+    {
+      "name": "General Programming",
+      "questions": [
+        { "q": "What does 'DRY' stand for?", "options": ["Don't Repeat Yourself", "Do Repeat Yearly", "Data Ready Yield", "Deploy Rapidly Yourself"], "answer": 0, "points": 100 },
+        { "q": "A function that calls itself is...", "options": ["Recursive", "Iterative", "Static", "Abstract"], "answer": 0, "points": 100 },
+        { "q": "Big-O notation describes...", "options": ["How runtime scales with input", "Lines of code", "Memory colour", "Compiler version"], "answer": 0, "points": 100 },
+        { "q": "Which is a version control system?", "options": ["Git", "Grep", "Gulp", "Gzip"], "answer": 0, "points": 100 }
+      ]
+    },
+    {
+      "name": "AI & Agents",
+      "questions": [
+        { "q": "In spec-driven development, sign-off moves from the diff to the...", "options": ["Plan", "Commit", "Release", "Ticket"], "answer": 0, "points": 200 },
+        { "q": "What does an LLM 'hallucination' mean?", "options": ["Confidently wrong output", "A caching layer", "A GPU error", "A prompt template"], "answer": 0, "points": 200 },
+        { "q": "Which reliably enforces a rule for a coding agent?", "options": ["A deterministic check/test", "A polite comment", "A longer prompt", "A bigger context window"], "answer": 0, "points": 200 },
+        { "q": "'Simple tasks need a prompt, complex ones need a ___.'", "options": ["Spec", "Meeting", "Framework", "Sprint"], "answer": 0, "points": 200 }
+      ]
+    },
+    {
+      "name": "Groningen & The Netherlands",
+      "questions": [
+        { "q": "Groningen is located in which part of the Netherlands?", "options": ["North", "South", "West coast", "Centre"], "answer": 0, "points": 100 },
+        { "q": "What is the tall medieval tower in Groningen called?", "options": ["Martinitoren", "Domtoren", "Euromast", "Oldehove"], "answer": 0, "points": 100 },
+        { "q": "The Netherlands is famous for which flower?", "options": ["Tulip", "Rose", "Orchid", "Daffodil"], "answer": 0, "points": 100 },
+        { "q": "What is the Dutch capital?", "options": ["Amsterdam", "Groningen", "Rotterdam", "The Hague"], "answer": 0, "points": 100 }
+      ]
+    },
+    {
+      "name": "Science & Nature",
+      "questions": [
+        { "q": "What gas do plants absorb for photosynthesis?", "options": ["Carbon dioxide", "Oxygen", "Nitrogen", "Helium"], "answer": 0, "points": 100 },
+        { "q": "How many planets are in our solar system?", "options": ["8", "9", "7", "10"], "answer": 0, "points": 100 },
+        { "q": "What is the chemical symbol for water?", "options": ["H2O", "O2", "CO2", "NaCl"], "answer": 0, "points": 100 },
+        { "q": "The speed of light is about...", "options": ["300,000 km/s", "30,000 km/s", "3,000 km/s", "3 million km/s"], "answer": 0, "points": 100 }
+      ]
+    },
+    {
+      "name": "Movies & Music",
+      "questions": [
+        { "q": "Which instrument has 88 keys?", "options": ["Piano", "Guitar", "Violin", "Flute"], "answer": 0, "points": 100 },
+        { "q": "A film's script is also called a...", "options": ["Screenplay", "Setlist", "Storyboard only", "Score"], "answer": 0, "points": 100 },
+        { "q": "How many beats are in a standard 4/4 bar?", "options": ["4", "3", "6", "8"], "answer": 0, "points": 100 },
+        { "q": "What do you call a film with no spoken dialogue and only music/text?", "options": ["Silent film", "Documentary", "Musical", "Short"], "answer": 0, "points": 100 }
+      ]
+    }
+  ]
+}

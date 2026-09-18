@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GroningenPHP - Spec-Driven Development: About &amp; Credits</title>
+    <link rel="stylesheet" href="../../css/styles.css">
+    <link rel="stylesheet" href="../../css/ai-powered.css">
+    <link rel="stylesheet" href="../../css/php-workshop.css">
+    <link rel="icon" href="../../favicon.ico" type="image/x-icon" sizes="any"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="shortcut icon" href="../../favicon.ico"/>
+    <link rel="stylesheet" href="../../css/sdd.css">
+</head>
+<body>
+<header class="header">
+    <nav class="nav">
+        <div class="nav-container">
+            <a class="logo" href="/index.html">
+                <img src="../../images/GroningenPHP-LOGO.png" alt="GroningenPHP Logo" class="logo-image">
+                <h1>GroningenPHP</h1>
+            </a>
+            <ul class="nav-menu">
+                <li><a href="/index.html#home">Home</a></li>
+                <li><a href="/index.html#about">About</a></li>
+                <li><a href="/index.html#events">Events</a></li>
+                <li><a href="/index.html#sponsors">Sponsors</a></li>
+                <li><a href="/index.html#contact">Contact</a></li>
+                <li><a href="/workshops/" class="active">Workshops</a></li>
+            </ul>
+            <div class="social-links">
+                <a href="https://www.youtube.com/@GroningenPHP/videos" target="_blank" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                <a href="https://x.com/groningenphp/" target="_blank" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                <a href="https://www.linkedin.com/groups/13836983/" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+            </div>
+            <div class="hamburger"><span></span><span></span><span></span></div>
+        </div>
+    </nav>
+</header>
+
+<main class="container">
+    <nav class="exercise-nav">
+        <a href="index.html" class="exercise-nav-link"><i class="fas fa-arrow-left"></i> Workshop home</a>
+        <span class="exercise-nav-position">About &amp; Credits</span>
+    </nav>
+
+    <section class="intro-section">
+        <h2>ℹ️ About this workshop <span class="workshop-date-badge">Oct 1, 2026</span></h2>
+        <div class="instruction-box">
+            <p class="lead">A hands-on introduction to <strong>Spec-Driven Development (SDD)</strong>: moving from ad-hoc "vibe-coding" to a repeatable workflow where you settle the <strong>problem</strong>, the <strong>plan</strong>, and what counts as <strong>done</strong> before any code exists — then let an AI coding agent build it, gated by a real check and read by a human.</p>
+            <p>In about three hours you pick one of two fun cases — a Kahoot-style <a href="case-trivia.html">Trivia app</a> or an <a href="case-sequencer.html">Interactive Music Sequencer</a> — and walk the same seven-step arc end to end. Everything runs on <strong>free, open-source tooling</strong>, so no paid AI subscription is required. To keep practising afterwards, the <a href="next-project.html">take-home guide</a> introduces OpenSpec for a repeatable lifecycle on your own projects.</p>
+            <div class="rules-box">
+                <strong>Based on a GroningenPHP talk:</strong> <em>"Spec-Driven Development: from vibe-coding to integrating AI coding assistants into the software development lifecycle."</em> This page gives proper credit to every tool and technology the workshop stands on.
+            </div>
+        </div>
+    </section>
+
+    <hr class="divider">
+
+    <!-- Method & frameworks -->
+    <section class="prompts-section">
+        <div class="sdd-credit-group">
+            <h3>🧭 The method &amp; specification frameworks</h3>
+            <p>The workshop teaches the ideas by hand first; these projects shaped the vocabulary and, in OpenSpec's case, power the take-home lifecycle.</p>
+            <ul class="sdd-credits">
+                <li class="sdd-credit sdd-credit--method">
+                    <h4 class="sdd-credit__name"><a href="https://github.com/Fission-AI/OpenSpec" target="_blank">OpenSpec</a></h4>
+                    <p class="sdd-credit__role">By Fission AI. The lightweight spec framework used in the take-home guide (propose → apply → archive). The change that built this workshop lives in this repo's <code>openspec/</code> folder.</p>
+                    <div class="sdd-credit__meta">
+                        <span class="sdd-credit__tag">Spec framework</span>
+                        <span class="sdd-credit__tag sdd-credit__tag--license">MIT</span>
+                    </div>
+                </li>
+                <li class="sdd-credit sdd-credit--method">
+                    <h4 class="sdd-credit__name"><a href="https://github.com/github/spec-kit" target="_blank">GitHub Spec Kit</a></h4>
+                    <p class="sdd-credit__role">One of the convergent frameworks that independently landed on the same four artifacts (constitution, spec, plan, tasks).</p>
+                    <div class="sdd-credit__meta"><span class="sdd-credit__tag">Spec framework</span><span class="sdd-credit__tag sdd-credit__tag--license">MIT</span></div>
+                </li>
+                <li class="sdd-credit sdd-credit--method">
+                    <h4 class="sdd-credit__name"><a href="https://kiro.dev" target="_blank">AWS Kiro</a></h4>
+                    <p class="sdd-credit__role">Amazon's spec-driven agentic IDE — cited as further evidence the pattern is converging across the industry.</p>
+                    <div class="sdd-credit__meta"><span class="sdd-credit__tag">Spec-driven IDE</span></div>
+                </li>
+                <li class="sdd-credit sdd-credit--method">
+                    <h4 class="sdd-credit__name"><a href="https://github.com/bmad-code-org/BMAD-METHOD" target="_blank">BMAD-METHOD</a></h4>
+                    <p class="sdd-credit__role">Agentic agile-driven development method referenced in the "everyone reinvented the same files" story.</p>
+                    <div class="sdd-credit__meta"><span class="sdd-credit__tag">Method</span><span class="sdd-credit__tag sdd-credit__tag--license">MIT</span></div>
+                </li>
+                <li class="sdd-credit sdd-credit--method">
+                    <h4 class="sdd-credit__name"><a href="https://github.com/obra/superpowers" target="_blank">Superpowers</a></h4>
+                    <p class="sdd-credit__role">A skills/workflow framework for agents, cited alongside the others as convergent prior art.</p>
+                    <div class="sdd-credit__meta"><span class="sdd-credit__tag">Agent skills</span></div>
+                </li>
+            </ul>
+        </div>
+    </section>
+
+    <hr class="divider">
+
+    <!-- Tooling -->
+    <section class="prompts-section">
+        <div class="sdd-credit-group">
+            <h3>🛠️ The tooling you run</h3>
+            <p>The free agent, its plugin, and the model providers that give it a brain — all usable without a paid AI subscription. See the <a href="setup.html">setup guide</a> for install steps.</p>
+            <ul class="sdd-credits">
+                <li class="sdd-credit">
+                    <h4 class="sdd-credit__name"><a href="https://opencode.ai" target="_blank">OpenCode</a></h4>
+                    <p class="sdd-credit__role">The free, open-source, model-agnostic terminal coding agent this workshop is built around.</p>
+                    <div class="sdd-credit__meta"><span class="sdd-credit__tag">AI coding agent</span><span class="sdd-credit__tag sdd-credit__tag--license">MIT</span></div>
+                </li>
+                <li class="sdd-credit">
+                    <h4 class="sdd-credit__name"><a href="https://www.npmjs.com/package/opencode-file-tree" target="_blank">opencode-file-tree</a></h4>
+                    <p class="sdd-credit__role">A community OpenCode plugin that adds a navigable file-tree sidebar with inline preview, so you can see specs and code as you work.</p>
+                    <div class="sdd-credit__meta"><span class="sdd-credit__tag">OpenCode plugin</span><span class="sdd-credit__tag sdd-credit__tag--license">MIT</span></div>
+                </li>
+                <li class="sdd-credit">
+                    <h4 class="sdd-credit__name"><a href="https://aistudio.google.com/apikey" target="_blank">Google Gemini</a></h4>
+                    <p class="sdd-credit__role">The recommended default model via Google AI Studio's free tier (Gemini 3.1 Flash Lite — medium): good results, low token use.</p>
+                    <div class="sdd-credit__meta"><span class="sdd-credit__tag">Model provider · free tier</span></div>
+                </li>
+                <li class="sdd-credit">
+                    <h4 class="sdd-credit__name"><a href="https://github.com/features/copilot" target="_blank">GitHub Copilot</a></h4>
+                    <p class="sdd-credit__role">Fallback model provider — free for verified students and open-source maintainers, and already set up for many attendees.</p>
+                    <div class="sdd-credit__meta"><span class="sdd-credit__tag">Model provider</span></div>
+                </li>
+                <li class="sdd-credit">
+                    <h4 class="sdd-credit__name"><a href="https://ollama.com" target="_blank">Ollama</a> + <a href="https://ollama.com/library/qwen2.5-coder" target="_blank">Qwen2.5&nbsp;Coder</a></h4>
+                    <p class="sdd-credit__role">The fully offline fallback: run a capable open-weight coding model locally, no signup and no data leaving your laptop.</p>
+                    <div class="sdd-credit__meta"><span class="sdd-credit__tag">Local model</span><span class="sdd-credit__tag sdd-credit__tag--license">Apache-2.0</span></div>
+                </li>
+                <li class="sdd-credit">
+                    <h4 class="sdd-credit__name"><a href="https://nodejs.org" target="_blank">Node.js</a></h4>
+                    <p class="sdd-credit__role">The runtime behind the npm installs for OpenCode, its plugins, and the OpenSpec CLI.</p>
+                    <div class="sdd-credit__meta"><span class="sdd-credit__tag">Runtime</span><span class="sdd-credit__tag sdd-credit__tag--license">MIT</span></div>
+                </li>
+            </ul>
+        </div>
+    </section>
+
+    <hr class="divider">
+
+    <!-- Build stack -->
+    <section class="prompts-section">
+        <div class="sdd-credit-group">
+            <h3>🧱 What you build the cases with</h3>
+            <p>The apps themselves lean on plain, widely available web technologies — no framework lock-in, so the focus stays on the spec-driven workflow.</p>
+            <ul class="sdd-credits">
+                <li class="sdd-credit sdd-credit--build">
+                    <h4 class="sdd-credit__name"><a href="https://www.php.net" target="_blank">PHP</a></h4>
+                    <p class="sdd-credit__role">The natural home stack for GroningenPHP and the backend for the Trivia case (entry point plus a questions store).</p>
+                    <div class="sdd-credit__meta"><span class="sdd-credit__tag">Backend</span><span class="sdd-credit__tag sdd-credit__tag--license">PHP License</span></div>
+                </li>
+                <li class="sdd-credit sdd-credit--build">
+                    <h4 class="sdd-credit__name"><a href="https://developer.mozilla.org/docs/Web/API/Web_Audio_API" target="_blank">Web Audio API</a></h4>
+                    <p class="sdd-credit__role">The browser sound engine powering the Music Sequencer — oscillators, gain nodes and scheduling, no plugins.</p>
+                    <div class="sdd-credit__meta"><span class="sdd-credit__tag">Browser audio</span><span class="sdd-credit__tag sdd-credit__tag--license">W3C standard</span></div>
+                </li>
+                <li class="sdd-credit sdd-credit--build">
+                    <h4 class="sdd-credit__name">HTML, CSS &amp; JavaScript</h4>
+                    <p class="sdd-credit__role">Vanilla front-end for both cases — the UI, buttons, sliders and quiz screens participants ship.</p>
+                    <div class="sdd-credit__meta"><span class="sdd-credit__tag">Front-end</span><span class="sdd-credit__tag sdd-credit__tag--license">Open web standards</span></div>
+                </li>
+                <li class="sdd-credit sdd-credit--build">
+                    <h4 class="sdd-credit__name">WebSockets / SSE</h4>
+                    <p class="sdd-credit__role">Stretch-goal technology for the live presenter view — the "not done yet" item surfaced during the Review step.</p>
+                    <div class="sdd-credit__meta"><span class="sdd-credit__tag">Real-time · stretch goal</span></div>
+                </li>
+            </ul>
+        </div>
+    </section>
+
+    <hr class="divider">
+
+    <!-- Site & assets -->
+    <section class="prompts-section">
+        <div class="sdd-credit-group">
+            <h3>🎨 Site &amp; assets</h3>
+            <p>Credit for the pieces that dress up these workshop pages.</p>
+            <ul class="sdd-credits">
+                <li class="sdd-credit">
+                    <h4 class="sdd-credit__name"><a href="https://fontawesome.com" target="_blank">Font Awesome</a> <small>(Free)</small></h4>
+                    <p class="sdd-credit__role">The icon set used throughout the site and these workshop pages.</p>
+                    <div class="sdd-credit__meta"><span class="sdd-credit__tag">Icons</span><span class="sdd-credit__tag sdd-credit__tag--license">CC BY 4.0 / MIT / SIL OFL</span></div>
+                </li>
+                <li class="sdd-credit">
+                    <h4 class="sdd-credit__name">The original talk</h4>
+                    <p class="sdd-credit__role">"Spec-Driven Development: from vibe-coding to integrating AI coding assistants into the software development lifecycle" — the GroningenPHP presentation this workshop is derived from.</p>
+                    <div class="sdd-credit__meta"><span class="sdd-credit__tag">Source material</span></div>
+                </li>
+            </ul>
+        </div>
+        <div class="instruction-box" style="margin-top:1.5rem;">
+            <p><small>Trademarks and product names belong to their respective owners. License labels are provided as a convenience and reflect the projects' own published terms at the time of writing — always check upstream for the authoritative license.</small></p>
+        </div>
+    </section>
+
+    <nav class="exercise-nav exercise-nav--bottom">
+        <a href="index.html" class="exercise-nav-link"><i class="fas fa-arrow-left"></i> Workshop home</a>
+        <a href="setup.html" class="exercise-nav-link exercise-nav-link--next">Setup guide <i class="fas fa-arrow-right"></i></a>
+    </nav>
+</main>
+
+<footer class="footer">
+    <div class="container">
+        <div class="footer-content">
+            <div class="footer-section">
+                <div class="footer-logo">
+                    <img src="../../images/GroningenPHP-LOGO.png" alt="GroningenPHP Logo" class="footer-logo-image">
+                    <h3>GroningenPHP</h3>
+                </div>
+                <p>PHP developers in Groningen meeting, sharing knowledge, and having fun!</p>
+            </div>
+            <div class="footer-section">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="/index.html#about">About</a></li>
+                    <li><a href="/index.html#events">Events</a></li>
+                    <li><a href="/workshops/">Workshops</a></li>
+                    <li><a href="/index.html#sponsors">Sponsors</a></li>
+                    <li><a href="/index.html#contact">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Connect</h4>
+                <div class="footer-social">
+                    <a href="https://www.meetup.com/groningenphp/" target="_blank"><i class="fas fa-calendar"></i></a>
+                    <a href="https://www.youtube.com/@GroningenPHP/videos" target="_blank"><i class="fab fa-youtube"></i></a>
+                    <a href="https://x.com/groningenphp/" target="_blank"><i class="fab fa-twitter"></i></a>
+                    <a href="https://www.linkedin.com/groups/13836983/" target="_blank"><i class="fab fa-linkedin"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; <span id="current-year">2026</span> GroningenPHP. All rights reserved.</p>
+        </div>
+    </div>
+</footer>
+
+<script src="../../js/script.js"></script>
+</body>
+</html>
