@@ -133,7 +133,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Check if carousel elements exist
     if (!carousel || slides.length === 0) {
-        console.warn('Carousel elements not found');
         return;
     }
 
@@ -386,6 +385,9 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 // === Event Card Autofill ===
+// Only runs on pages that actually have the event card (e.g. the homepage).
+// Guards against a 404 for next-event.txt and null-element writes on subpages.
+if (document.getElementById('eventMonth')) {
 fetch('next-event.txt')
     .then(response => response.text())
     .then(text => {
@@ -427,3 +429,4 @@ fetch('next-event.txt')
     .catch(err => {
         console.error('Error loading event:', err);
     });
+}
