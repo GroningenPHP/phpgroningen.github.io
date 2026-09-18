@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow" data-noindex-until="2026-09-29T17:30:00Z">
     <title>GroningenPHP - Spec-Driven Development Workshop</title>
     <link rel="stylesheet" href="../../css/styles.css">
     <link rel="stylesheet" href="../../css/ai-powered.css">
@@ -64,36 +65,16 @@
         </div>
     </section>
 
-    <!-- Setup CTA -->
+    <!-- Setup -->
     <section class="prompts-section">
+        <h2>1 · Set up your tools</h2>
+        <p class="subtext subtext--left">Before anything else, get the free tooling running — it takes about 15 minutes.</p>
         <div class="sandbox-banner">
             <div class="sandbox-banner__text">
                 <span class="sandbox-banner__icon">⚙️</span>
-                <span><strong>First time here?</strong> Install the free tooling first — OpenCode plus a free model, on Ubuntu or Windows.</span>
+                <span><strong>First time here?</strong> Install OpenCode, the file-tree plugin and a free model, on Ubuntu or Windows — the setup guide walks you through every step.</span>
             </div>
-            <a href="setup.html" class="sandbox-banner__link"><i class="fas fa-download"></i> Open Setup Guide</a>
-        </div>
-    </section>
-
-    <hr class="divider">
-
-    <!-- Choose a case -->
-    <section class="prompts-section">
-        <h2>1 · Choose your case</h2>
-        <p class="subtext subtext--left">Both run the exact same spec-driven arc — pick whichever sounds more fun.</p>
-        <div class="sdd-cases">
-            <a href="case-trivia.html" class="sdd-case-card">
-                <div class="sdd-case-card__emoji">🧠</div>
-                <h3>Trivia App</h3>
-                <p>A Kahoot-style quiz people join from a meeting with a code. Seeded categories, custom questions, live scoring.</p>
-                <span class="sdd-case-card__cta">Start Case A <i class="fas fa-arrow-right"></i></span>
-            </a>
-            <a href="case-sequencer.html" class="sdd-case-card">
-                <div class="sdd-case-card__emoji">🎛️</div>
-                <h3>Interactive Music Sequencer</h3>
-                <p>A browser beat-machine: toggle drums, vocals, melody and rhythms on and off with clear buttons and sliders.</p>
-                <span class="sdd-case-card__cta">Start Case B <i class="fas fa-arrow-right"></i></span>
-            </a>
+            <a href="setup.html" class="sdd-download" style="margin-top:.75rem;"><i class="fas fa-download"></i> Open Setup Guide</a>
         </div>
     </section>
 
@@ -101,17 +82,28 @@
 
     <!-- The flow -->
     <section class="prompts-section">
-        <h2>2 · The flow, seven beats</h2>
-        <p class="subtext subtext--left">The first four steps happen <strong>before any code exists</strong>. That's the whole idea.</p>
-        <ol class="sdd-arc">
-            <li><span class="sdd-arc__n">1</span><strong>Intent</strong><small>what problem</small></li>
-            <li><span class="sdd-arc__n">2</span><strong>Spec</strong><small>what &amp; why</small></li>
-            <li><span class="sdd-arc__n">3</span><strong>Plan</strong><small>how, grounded</small></li>
-            <li><span class="sdd-arc__n">4</span><strong>Tasks</strong><small>units of work</small></li>
-            <li><span class="sdd-arc__n">5</span><strong>Implement</strong><small>agent writes</small></li>
-            <li><span class="sdd-arc__n">6</span><strong>Verify</strong><small>checks gate it</small></li>
-            <li><span class="sdd-arc__n">7</span><strong>Review</strong><small>a human reads</small></li>
-        </ol>
+        <h2>2 · The flow — seven steps, two phases</h2>
+        <p class="subtext subtext--left">This is the whole idea: the first four steps happen <strong>before any code exists</strong>. You decide <em>what</em>, <em>why</em> and <em>how</em> up front — then the agent writes, a check gates it, and a human reads it.</p>
+        <div class="sdd-phases">
+            <div class="sdd-phase sdd-phase--before">
+                <span class="sdd-phase__label">Before code <small>you decide</small></span>
+                <ol class="sdd-arc">
+                    <li><span class="sdd-arc__n">1</span><strong>Intent</strong><small>what problem</small></li>
+                    <li><span class="sdd-arc__n">2</span><strong>Spec</strong><small>what &amp; why</small></li>
+                    <li><span class="sdd-arc__n">3</span><strong>Plan</strong><small>how, grounded</small></li>
+                    <li><span class="sdd-arc__n">4</span><strong>Tasks</strong><small>units of work</small></li>
+                </ol>
+            </div>
+            <div class="sdd-phase__rule" aria-hidden="true"></div>
+            <div class="sdd-phase sdd-phase--after">
+                <span class="sdd-phase__label">After code <small>agent · gate · human</small></span>
+                <ol class="sdd-arc">
+                    <li><span class="sdd-arc__n">5</span><strong>Implement</strong><small>agent writes</small></li>
+                    <li><span class="sdd-arc__n">6</span><strong>Verify</strong><small>a check gates it</small></li>
+                    <li><span class="sdd-arc__n">7</span><strong>Review</strong><small>a human reads</small></li>
+                </ol>
+            </div>
+        </div>
         <div class="instruction-box" style="margin-top:1.25rem;">
             <p><strong>Kickoff checkpoints</strong> the facilitators will look for as you go:</p>
             <ul class="tips-list">
@@ -152,9 +144,31 @@
 
     <hr class="divider">
 
+    <!-- Choose a case -->
+    <section class="prompts-section">
+        <h2>4 · Choose your case</h2>
+        <p class="subtext subtext--left">Now put it into practice. Both cases run the exact same spec-driven arc — pick whichever sounds more fun.</p>
+        <div class="sdd-cases">
+            <a href="case-trivia.html" class="sdd-case-card">
+                <div class="sdd-case-card__emoji">🧠</div>
+                <h3>Trivia App</h3>
+                <p>A Kahoot-style quiz people join from a meeting with a code. Seeded categories, custom questions, live scoring.</p>
+                <span class="sdd-case-card__cta">Start Case A <i class="fas fa-arrow-right"></i></span>
+            </a>
+            <a href="case-sequencer.html" class="sdd-case-card">
+                <div class="sdd-case-card__emoji">🎛️</div>
+                <h3>Interactive Music Sequencer</h3>
+                <p>A browser beat-machine: toggle drums, vocals, melody and rhythms on and off with clear buttons and sliders.</p>
+                <span class="sdd-case-card__cta">Start Case B <i class="fas fa-arrow-right"></i></span>
+            </a>
+        </div>
+    </section>
+
+    <hr class="divider">
+
     <!-- When worth it -->
     <section class="prompts-section">
-        <h2>4 · When is it worth the ceremony?</h2>
+        <h2>5 · When is it worth the ceremony?</h2>
         <div class="instruction-box">
             <p>Spec-driven development earns its keep for <strong>auditability</strong> (what was decided, not just what changed), <strong>governance</strong> (one file people and agents both read), and <strong>parallelisation</strong> (agents in parallel need contracts that don't overlap).</p>
             <p>It is <em>not</em> for prototypes, one-line fixes, or exploration.</p>
@@ -167,10 +181,11 @@
 
     <!-- Take-home -->
     <section class="prompts-section">
-        <h2>5 · Take it home</h2>
+        <h2>6 · Take it home</h2>
         <div class="instruction-box">
             <p>Today you'll do spec-driven development by hand. To keep doing it on your own projects, there's a free tool that gives it structure and a repeatable lifecycle — <strong>OpenSpec</strong>. The take-home guide walks you through install → propose → apply → archive, and points at the real change that built this very workshop.</p>
             <p><a href="next-project.html" class="sdd-download"><i class="fas fa-rocket"></i> Use this on your next project</a></p>
+            <p><small>Curious what this workshop is built on? See the <a href="about.html">about &amp; credits</a> page for the full list of tools and technologies used.</small></p>
         </div>
     </section>
 

@@ -69,8 +69,10 @@
     <div class="workshop-list">
         <!-- Add future workshops above this comment (newest first) -->
 
-        <!-- === Oct 2026 — Spec-Driven Development === -->
-        <a href="spec-driven/" class="workshop-card workshop-card--ai">
+        <!-- === Oct 2026 — Spec-Driven Development ===
+             Hidden until 2 days before the meetup (Oct 1, 2026 19:30 CEST = 17:30 UTC).
+             The spec-driven/ page itself stays reachable by direct link before then. -->
+        <a href="spec-driven/" class="workshop-card workshop-card--ai" id="spec-driven-card" data-reveal-at="2026-09-29T17:30:00Z" hidden>
             <div class="workshop-card__date">
                 <span class="workshop-card__month">Oct</span>
                 <span class="workshop-card__day">1</span>
@@ -252,6 +254,15 @@
 <script src="../js/script.js"></script>
 <script>
 document.addEventListener('DOMContentLoaded', function () {
+    // Reveal date-gated workshop cards once their reveal time has passed.
+    // Before that they stay hidden here but remain reachable by direct link.
+    document.querySelectorAll('[data-reveal-at]').forEach(function (el) {
+        const revealAt = new Date(el.getAttribute('data-reveal-at'));
+        if (!isNaN(revealAt) && Date.now() >= revealAt.getTime()) {
+            el.hidden = false;
+        }
+    });
+
     const ctfCard = document.getElementById('ctf-card');
     const overlay = document.getElementById('ctf-offline-overlay');
     const closeBtn = document.getElementById('ctf-overlay-close');

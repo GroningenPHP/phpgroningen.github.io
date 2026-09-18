@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow" data-noindex-until="2026-09-29T17:30:00Z">
     <title>GroningenPHP - Spec-Driven Development: Trivia App</title>
     <link rel="stylesheet" href="../../css/styles.css">
     <link rel="stylesheet" href="../../css/ai-powered.css">
@@ -59,24 +60,35 @@
             <p class="lead">Build a Kahoot-style trivia game a host can run in a meeting: people join from their phones with a code, answer questions, and watch their score climb. You'll build it <strong>spec-first</strong> — the plan gets settled before a single line of code.</p>
             <div class="sdd-what-why">
                 <div><span class="sdd-tag">What you'll make</span> A joinable quiz with seeded categories, custom questions, and live scoring.</div>
-                <div><span class="sdd-tag">The real lesson</span> How spec → plan → build makes review cheap and mistakes early.</div>
+                <div><span class="sdd-tag">The real lesson</span> How settling intent → spec → plan → tasks <em>before code</em> makes review cheap and mistakes early.</div>
             </div>
         </div>
     </section>
 
     <!-- The arc -->
     <section class="prompts-section">
-        <h2>The arc you'll follow</h2>
-        <p class="subtext subtext--left">Every case runs the same seven beats. The method stays constant; how far you push the build is up to you.</p>
-        <ol class="sdd-arc">
-            <li><span class="sdd-arc__n">1</span><strong>Intent</strong><small>one sentence</small></li>
-            <li><span class="sdd-arc__n">2</span><strong>Spec</strong><small>what &amp; why</small></li>
-            <li><span class="sdd-arc__n">3</span><strong>Plan</strong><small>+ sign-off</small></li>
-            <li><span class="sdd-arc__n">4</span><strong>Build</strong><small>task by task</small></li>
-            <li><span class="sdd-arc__n">5</span><strong>Twist</strong><small>plan was wrong</small></li>
-            <li><span class="sdd-arc__n">6</span><strong>Enforce</strong><small>+ stretch</small></li>
-            <li><span class="sdd-arc__n">7</span><strong>Reflect</strong></li>
-        </ol>
+        <h2>The seven steps you'll follow</h2>
+        <p class="subtext subtext--left">Every case runs the same seven steps, in two phases. <strong>The first four happen before a single line of code exists</strong> — that's the whole point. How far you push the build is up to you.</p>
+        <div class="sdd-phases">
+            <div class="sdd-phase sdd-phase--before">
+                <span class="sdd-phase__label">Before code <small>you decide</small></span>
+                <ol class="sdd-arc">
+                    <li><span class="sdd-arc__n">1</span><strong>Intent</strong><small>what problem</small></li>
+                    <li><span class="sdd-arc__n">2</span><strong>Spec</strong><small>what &amp; why</small></li>
+                    <li><span class="sdd-arc__n">3</span><strong>Plan</strong><small>+ sign-off</small></li>
+                    <li><span class="sdd-arc__n">4</span><strong>Tasks</strong><small>units of work</small></li>
+                </ol>
+            </div>
+            <div class="sdd-phase__rule" aria-hidden="true"></div>
+            <div class="sdd-phase sdd-phase--after">
+                <span class="sdd-phase__label">After code <small>agent · gate · human</small></span>
+                <ol class="sdd-arc">
+                    <li><span class="sdd-arc__n">5</span><strong>Implement</strong><small>agent writes</small></li>
+                    <li><span class="sdd-arc__n">6</span><strong>Verify</strong><small>a check gates it</small></li>
+                    <li><span class="sdd-arc__n">7</span><strong>Review</strong><small>a human reads</small></li>
+                </ol>
+            </div>
+        </div>
     </section>
 
     <hr class="divider">
@@ -86,15 +98,21 @@
         <h2>Guided happy path <span class="sdd-pill sdd-pill--green">everyone starts here</span></h2>
         <p class="subtext subtext--left">Follow the steps in order. Each one ends with a <strong>checkpoint</strong> — don't move on until you see it.</p>
 
+        <div class="sdd-phase-head sdd-phase-head--before">
+            <span class="sdd-phase-head__n">Phase 1 · Before code</span>
+            <h3>You decide</h3>
+            <p>Steps 1–4 all happen <strong>before a single line of code exists</strong>. This is where the thinking lives.</p>
+        </div>
+
         <!-- Beat 1 -->
-        <div class="sdd-beat">
-            <div class="sdd-beat__head"><span class="sdd-beat__n">1</span><h3>Intent — is this even worth a spec?</h3></div>
+        <div class="sdd-beat sdd-beat--before">
+            <div class="sdd-beat__head"><span class="sdd-beat__n">1</span><h3>Intent — what problem, is it even worth a spec?</h3></div>
             <p>In your workshop folder, start <code>opencode</code>. Ask yourself the facilitator's question: <em>"Could I one-shot this with a single prompt?"</em> Joining + categories + scoring has enough moving parts that the answer is no. That judgement is the whole point — you just earned the ceremony.</p>
             <div class="sdd-checkpoint">✅ <strong>Checkpoint:</strong> you can say, in one sentence, what the app is: <em>"A host runs a quiz; people join from a meeting with a code and answer on their phones."</em></div>
         </div>
 
         <!-- Beat 2 -->
-        <div class="sdd-beat">
+        <div class="sdd-beat sdd-beat--before">
             <div class="sdd-beat__head"><span class="sdd-beat__n">2</span><h3>Spec — what &amp; why, as a file</h3></div>
             <p>Create <code>spec.md</code> in the repo. This is a <strong>file the agent reads every session</strong>, not a chat message that vanishes. Fill in the skeleton — paste it to your agent and ask it to help you sharpen it, but <em>you</em> own the decisions.</p>
             <div class="sdd-code" id="t-spec"><span class="copy-badge" onclick="copyCode('t-spec')"><i class="fas fa-copy"></i> Copy</span><pre><code># spec.md — Trivia
@@ -116,8 +134,8 @@ A joiner submits an answer and their score updates on screen.</code></pre></div>
         </div>
 
         <!-- Beat 3 -->
-        <div class="sdd-beat">
-            <div class="sdd-beat__head"><span class="sdd-beat__n">3</span><h3>Plan — grounded, then signed off</h3></div>
+        <div class="sdd-beat sdd-beat--before">
+            <div class="sdd-beat__head"><span class="sdd-beat__n">3</span><h3>Plan — how, grounded, then signed off</h3></div>
             <p>Switch OpenCode to <strong>Plan mode</strong> (press <kbd>Tab</kbd>). Ask it to write <code>plan.md</code>: which files change, in what order, and <strong>the check that proves each part works</strong>. Keep it <em>grounded</em> — point it at the few files that matter, not "the whole repo".</p>
             <div class="sdd-code" id="t-plan"><span class="copy-badge" onclick="copyCode('t-plan')"><i class="fas fa-copy"></i> Copy</span><pre><code>We're building the app in spec.md. Stay in plan mode.
 Write plan.md: the files to create, in order, and for each step
@@ -125,15 +143,34 @@ the command or check that proves it works. Keep it small — a single
 PHP entry point plus a questions store is fine. Do NOT write code yet.</code></pre></div>
             <div class="sdd-signoff">
                 <i class="fas fa-stamp"></i>
-                <div><strong>Plan review gate (3 min).</strong> Show your <code>plan.md</code> to a facilitator or the person next to you. "Is this plan right?" Changing your mind <em>here</em> costs a paragraph. Changing it after 200 lines of code costs a rewrite. <em>This is the moment the whole method is about.</em></div>
+                <div><strong>Plan review gate (3 min).</strong> Show your <code>plan.md</code> to a facilitator or the person next to you. "Is this plan right?" Changing your mind <em>here</em> costs a paragraph. Changing it after 200 lines of code costs a rewrite. <em>This is where review moved to — the moment the whole method is about.</em></div>
             </div>
-            <div class="sdd-checkpoint">✅ <strong>Checkpoint:</strong> <code>plan.md</code> is reviewed, and every step names a check. Only now do you leave Plan mode.</div>
+            <div class="sdd-checkpoint">✅ <strong>Checkpoint:</strong> <code>plan.md</code> is reviewed, and every step names a check.</div>
         </div>
 
         <!-- Beat 4 -->
-        <div class="sdd-beat">
-            <div class="sdd-beat__head"><span class="sdd-beat__n">4</span><h3>Build — tell it what to test, not how</h3></div>
-            <p>Press <kbd>Tab</kbd> back to Build mode and work the plan step by step. Grab the seeded questions so nobody stalls on content:</p>
+        <div class="sdd-beat sdd-beat--before">
+            <div class="sdd-beat__head"><span class="sdd-beat__n">4</span><h3>Tasks — units of work, still no code</h3></div>
+            <p>The last thing before code exists: turn the signed-off plan into a <strong>task list</strong> — small, ordered units the agent can execute and you can tick off. Stay in Plan mode.</p>
+            <div class="sdd-code" id="t-tasks"><span class="copy-badge" onclick="copyCode('t-tasks')"><i class="fas fa-copy"></i> Copy</span><pre><code>Still in plan mode — no code yet. Break plan.md into a checklist
+of small tasks, in order, each one something you can verify on its
+own. For example:
+- [ ] questions store loads the seeded JSON
+- [ ] host can start a session and get a join code
+- [ ] a joiner submits an answer and their score updates</code></pre></div>
+            <div class="sdd-checkpoint">✅ <strong>Checkpoint:</strong> you have an ordered list of small tasks and <strong>nothing has been coded yet</strong>. Only now do you leave Plan mode.</div>
+        </div>
+
+        <div class="sdd-phase-head sdd-phase-head--after">
+            <span class="sdd-phase-head__n">Phase 2 · After code</span>
+            <h3>Agent writes · a check gates it · a human reads it</h3>
+            <p>Only now does code appear. You already made every decision — the rest is execution and checking.</p>
+        </div>
+
+        <!-- Beat 5 -->
+        <div class="sdd-beat sdd-beat--after">
+            <div class="sdd-beat__head"><span class="sdd-beat__n">5</span><h3>Implement — the agent writes</h3></div>
+            <p>Press <kbd>Tab</kbd> back to Build mode and let the agent work the tasks one by one. Grab the seeded questions so nobody stalls on content:</p>
             <p><a class="sdd-download" href="assets/trivia-questions.json" download><i class="fas fa-file-download"></i> trivia-questions.json</a> — 8 categories, ready to import.</p>
             <p>When you specify behaviour, give the agent the <strong>acceptance scenario</strong> (the "oracle"), not a lecture on testing:</p>
             <div class="sdd-code" id="t-test"><span class="copy-badge" onclick="copyCode('t-test')"><i class="fas fa-copy"></i> Copy</span><pre><code>Add a check for this behaviour:
@@ -143,16 +180,27 @@ Write it as a runnable test, then implement until it passes.</code></pre></div>
             <div class="sdd-checkpoint">✅ <strong>Checkpoint (MVP):</strong> you can open the app, join with a code from a second browser tab/phone, answer a seeded question, and see the score change.</div>
         </div>
 
-        <!-- Beat 5 -->
-        <div class="sdd-beat sdd-beat--twist">
-            <div class="sdd-beat__head"><span class="sdd-beat__n">5</span><h3>The twist — the plan was wrong</h3></div>
-            <p>At some point a plan assumption breaks. That's not failure — it's the point. Spec-driven development surfaces it <strong>the same day</strong>, for the price of a paragraph. A classic one for this case:</p>
+        <!-- Beat 6 -->
+        <div class="sdd-beat sdd-beat--after">
+            <div class="sdd-beat__head"><span class="sdd-beat__n">6</span><h3>Verify — a check gates it, prose doesn't</h3></div>
+            <p>Pick one rule that matters and make it a <strong>deterministic check</strong>, not a polite sentence in the spec. This is the gate the agent has to get past.</p>
+            <div class="sdd-vs">
+                <div class="sdd-vs__col sdd-vs__col--bad"><span>Prose (weak)</span>"please don't allow empty questions"</div>
+                <div class="sdd-vs__col sdd-vs__col--good"><span>Sensor (real)</span>a test/validator that <strong>rejects</strong> an empty question</div>
+            </div>
+            <div class="sdd-checkpoint">✅ <strong>Checkpoint:</strong> you have at least one test that goes red when the rule is broken.</div>
+        </div>
+
+        <!-- Beat 7 -->
+        <div class="sdd-beat sdd-beat--after">
+            <div class="sdd-beat__head"><span class="sdd-beat__n">7</span><h3>Review — a human reads it</h3></div>
+            <p>You already agreed the plan, so this read is quick — you're checking the agent honoured it, not meeting the design for the first time. This is where you'll often notice <strong>the plan was wrong</strong>. That's not failure — it's the point, and because you're at review (not release) the fix is a paragraph. A classic one for this case:</p>
             <div class="sdd-twist-box">
                 <div class="sdd-twist-row"><span class="sdd-twist-label">Plan said</span> "the join code lives in the client, baked in when the app is built"</div>
                 <div class="sdd-twist-row"><span class="sdd-twist-label">Reality</span> the client bundle is built without it → the code can never arrive</div>
                 <div class="sdd-twist-row sdd-twist-row--fix"><span class="sdd-twist-label">Fix</span> move the join code to the server — one line in <code>plan.md</code></div>
             </div>
-            <p>Amend <code>plan.md</code> and keep going. Then record what you <em>couldn't</em> finish — a plan that names its own gaps is one a reviewer can trust:</p>
+            <p>Amend <code>plan.md</code> and let the agent redo that step. Then record what you <em>couldn't</em> finish — a plan that names its own gaps is one a reviewer can trust:</p>
             <div class="sdd-code" id="t-done"><span class="copy-badge" onclick="copyCode('t-done')"><i class="fas fa-copy"></i> Copy</span><pre><code>## Done
 - join-by-code, scoring, 6 seeded categories
 
@@ -160,17 +208,6 @@ Write it as a runnable test, then implement until it passes.</code></pre></div>
 - live presenter view — needs websockets, out of scope today</code></pre></div>
             <div class="sdd-checkpoint">✅ <strong>Checkpoint:</strong> <code>plan.md</code> shows the corrected step and a Done / Not-done block.</div>
             <p class="sdd-quote">"Waterfall's flaw was never having a plan. It was waiting months to find out the plan was wrong."</p>
-        </div>
-
-        <!-- Beat 6 -->
-        <div class="sdd-beat">
-            <div class="sdd-beat__head"><span class="sdd-beat__n">6</span><h3>Enforce one rule — prose doesn't enforce anything</h3></div>
-            <p>Pick one rule that matters and make it a <strong>deterministic check</strong>, not a polite sentence in the spec.</p>
-            <div class="sdd-vs">
-                <div class="sdd-vs__col sdd-vs__col--bad"><span>Prose (weak)</span>"please don't allow empty questions"</div>
-                <div class="sdd-vs__col sdd-vs__col--good"><span>Sensor (real)</span>a test/validator that <strong>rejects</strong> an empty question</div>
-            </div>
-            <div class="sdd-checkpoint">✅ <strong>Checkpoint:</strong> you have at least one test that goes red when the rule is broken.</div>
         </div>
     </section>
 
@@ -185,7 +222,7 @@ Write it as a runnable test, then implement until it passes.</code></pre></div>
             <li><i class="fas fa-stopwatch"></i><div><strong>Timed rounds &amp; leaderboard</strong> — countdown per question, ranked results at the end.</div></li>
             <li><i class="fas fa-file-csv"></i><div><strong>Import questions from CSV</strong> — with a validator that rejects malformed rows.</div></li>
             <li><i class="fas fa-tags"></i><div><strong>Custom category</strong> — let the host add a category, enforced by a test for its rules.</div></li>
-            <li><i class="fas fa-bolt"></i><div><strong>Live presenter view</strong> — the "not done" item from beat 5, via websockets/SSE.</div></li>
+            <li><i class="fas fa-bolt"></i><div><strong>Live presenter view</strong> — the "not done" item from the Review step, via websockets/SSE.</div></li>
         </ul>
     </section>
 

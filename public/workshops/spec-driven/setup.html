@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow" data-noindex-until="2026-09-29T17:30:00Z">
     <title>GroningenPHP - Spec-Driven Development: Setup</title>
     <link rel="stylesheet" href="../../css/styles.css">
     <link rel="stylesheet" href="../../css/ai-powered.css">
@@ -119,6 +120,23 @@ npm install -g opencode-ai</code></pre></div>
                 </li>
             </ol>
         </div>
+        <div style="margin-top:1.75rem;">
+            <h3 style="margin-bottom:.25rem;">Then add the file-tree plugin</h3>
+            <p class="subtext subtext--left">A navigable file tree in the sidebar so you can see and preview the specs and code as you work. Same command on Ubuntu and Windows.</p>
+            <ol class="step-list">
+                <li>
+                    <strong>Install it with OpenCode's built-in command.</strong> This is a <em>TUI plugin</em>, so let OpenCode wire it up — don't hand-edit the config. Run:
+                    <div class="cmd" id="ft-install"><span class="copy-badge" onclick="copyCode('ft-install')"><i class="fas fa-copy"></i> Copy</span><pre><code>opencode plugin --global opencode-file-tree</code></pre></div>
+                    <p><small>The command installs the package and registers it in the right place (a <code>tui.json</code> next to your config). Drop <code>--global</code> to add it to the current project only.</small></p>
+                </li>
+                <li>
+                    <strong>Restart OpenCode.</strong> The file tree appears in the sidebar — click a folder to expand it, click a file to preview it inline.
+                </li>
+            </ol>
+            <div class="rules-box" style="margin-top:1.25rem;">
+                <strong>Don't add it to <code>opencode.json</code> by hand.</strong> The top-level <code>"plugin"</code> array is for <em>server</em> plugins; putting a TUI plugin there fails to load (<code>must default export an object with server()</code>) and no sidebar appears. Always use the <code>opencode plugin</code> command above.
+            </div>
+        </div>
     </section>
 
     <hr class="divider">
@@ -136,7 +154,7 @@ npm install -g opencode-ai</code></pre></div>
                 <ol class="step-list">
                     <li>Get a free key at <a href="https://aistudio.google.com/apikey" target="_blank">aistudio.google.com/apikey</a> (Google account).</li>
                     <li>In OpenCode run <code>/connect</code>, choose <strong>Google</strong>, paste the key.</li>
-                    <li>Run <code>/models</code> and pick a <em>Gemini</em> model.</li>
+                    <li>Run <code>/models</code> and pick <strong>Gemini 3.1 Flash Lite &mdash; medium</strong>. It gives reasonable results for this workshop while using few tokens, so you stay well inside the free tier.</li>
                 </ol>
             </div>
 

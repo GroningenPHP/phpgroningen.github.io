@@ -64,16 +64,24 @@ touch Build mode — that scenario becomes their first test.
 
 ## Case A — Trivia: facilitator script
 
-**Reference arc (90 min):** intent → spec → plan (+sign-off) → build → the twist
-→ enforce (+stretch) → reflect. Each participant page beat matches this.
+**Reference arc (90 min), two phases matching the talk's slide:**
+*Before code — you decide:* 1 intent → 2 spec → 3 plan (+sign-off) → 4 tasks.
+*After code — agent, gate, human:* 5 implement → 6 verify → 7 review (the twist
+lands here). Each participant-page step matches this; a closing Reflect wraps up.
 
 ### The plan review gate (beat 3)
 This is the most important 3 minutes. Read their `plan.md` and ask "is this
 right?" *before* they code. A muddled plan gets fixed for a paragraph now instead
 of a rewrite later. Make sure every plan step names a check.
 
-### The planted twist (beat 5)
-Steer teams toward this discovery (or reveal it if they don't hit one):
+### Tasks, still no code (beat 4)
+Before anyone builds, have them turn the signed-off plan into a short, ordered
+checklist of small units. This is the last before-code step — hold the line on
+"no code yet" until the task list exists.
+
+### The planted twist (beat 7 · Review)
+A human reads the result and finds the plan was wrong. Steer teams toward this
+discovery (or reveal it if they don't hit one):
 
 ```
 Plan said:  the join code lives in the client, baked in at build time
@@ -85,7 +93,7 @@ The lesson: SDD surfaces a wrong plan the *same day*, cheaply. Have them amend
 `plan.md` and add a **Done / Not-done-and-why** block (e.g. "live presenter view —
 needs websockets, out of scope").
 
-### Enforce (beat 6)
+### Verify (beat 6)
 One rule becomes a real check, e.g. a validator/test that rejects an empty
 question. Prose in the spec doesn't enforce anything; a red test does.
 
@@ -102,7 +110,7 @@ question. Prose in the spec doesn't enforce anything; a red test does.
 
 Same arc as Case A. A single-page app using the Web Audio API is plenty.
 
-### The planted twist (beat 5)
+### The planted twist (beat 7 · Review)
 
 ```
 Plan said:  create each track's audio node when the user clicks it on
@@ -113,7 +121,7 @@ Fix:        pre-build the audio graph up front; toggles just mute/unmute
 
 Done / Not-done example: "per-step pattern editing — out of scope for the MVP".
 
-### Enforce (beat 6)
+### Verify (beat 6)
 E.g. a test that rejects a tempo outside 40–240 BPM.
 
 ### Common blocking points
@@ -155,16 +163,20 @@ say *"this tool built the very page you're looking at."*
 
 ## Coverage map (talk takeaway → where it lands)
 
-| Takeaway | Beat |
+| Takeaway | Step |
 |----------|------|
-| Four artifacts vocabulary | index §3; beats 2–4 |
-| Spec & plan as files before code | beats 2–3 |
-| Sign-off moves diff → plan | beat 3 (review gate) |
-| Prose enforces nothing; make it deterministic | beat 6 |
-| Tell it what to test, not how | beat 4 |
-| Ground the plan on the right context | beat 3 |
-| A plan that names what it couldn't finish | beat 5 (Done/Not-done) |
-| When it's worth the ceremony | index §4; beat 7 |
+| Four artifacts vocabulary | index §3; steps 2–4 |
+| The 7-step lifecycle, split before/after code | arc (both phases); index §2 |
+| Spec & plan as files before code | steps 2–3 |
+| Tasks as units of work, before code | step 4 |
+| Sign-off moves diff → plan | step 3 (review gate) |
+| Implement = the agent writes | step 5 |
+| Prose enforces nothing; make it deterministic | step 6 (Verify) |
+| Tell it what to test, not how | step 5 |
+| Ground the plan on the right context | step 3 |
+| A plan will be wrong; correction is cheap and early | step 7 (Review) |
+| A plan that names what it couldn't finish | step 7 (Done/Not-done) |
+| When it's worth the ceremony | index §4; Reflect |
 
 ## Reflection to close the room
 "You wrote ~a page of markdown before any code. Worth it here? Worth it for a

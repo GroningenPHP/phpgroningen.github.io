@@ -1,3 +1,16 @@
+// Scheduled publish: pages carry `<meta name="robots" content="noindex,nofollow"
+// data-noindex-until="<ISO date>">` so they default to non-indexable. Once the
+// reveal time passes we remove that meta so crawlers may index the page. Failing
+// safe: if this script never runs, the page simply stays noindex.
+(function () {
+    var meta = document.querySelector('meta[name="robots"][data-noindex-until]');
+    if (!meta) return;
+    var until = new Date(meta.getAttribute('data-noindex-until'));
+    if (!isNaN(until.getTime()) && Date.now() >= until.getTime()) {
+        meta.parentNode.removeChild(meta);
+    }
+})();
+
 // Mobile Navigation Toggle
 document.addEventListener('DOMContentLoaded', function() {
     const hamburger = document.querySelector('.hamburger');
