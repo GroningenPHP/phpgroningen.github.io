@@ -111,6 +111,7 @@ openspec init --tools opencode</code></pre></div>
 
         <p class="subtext subtext--left">How it maps to the workshop, beat for beat:</p>
         <div class="sdd-map">
+            <div class="sdd-map__row"><span class="sdd-map__hand">Placement default for reliable agent reads</span><span class="sdd-map__arrow">→</span><span class="sdd-map__os"><code>/agents.md</code> at repo root + work files in <code>/.specification/changes/feature-name/</code> (mention this path in session chat)</span></div>
             <div class="sdd-map__row"><span class="sdd-map__hand">Wrote <code>spec.md</code> — what &amp; why</span><span class="sdd-map__arrow">→</span><span class="sdd-map__os"><code>proposal</code> + spec requirements</span></div>
             <div class="sdd-map__row"><span class="sdd-map__hand">"Done means…" block</span><span class="sdd-map__arrow">→</span><span class="sdd-map__os">spec <code>#### Scenarios</code></span></div>
             <div class="sdd-map__row"><span class="sdd-map__hand">Wrote <code>plan.md</code>, grounded</span><span class="sdd-map__arrow">→</span><span class="sdd-map__os"><code>design</code></span></div>
@@ -150,6 +151,7 @@ openspec init --tools opencode</code></pre></div>
         <div class="instruction-box">
             <p>This whole workshop — the pages you're reading right now — was built <strong>with OpenSpec</strong>. The change that produced it is in this very repository:</p>
             <div class="sdd-code" id="np-example"><span class="copy-badge" onclick="copyCode('np-example')"><i class="fas fa-copy"></i> Copy</span><pre><code>openspec/changes/workshop-sdd/</code></pre></div>
+            <p><small>Recommended structure in your own repo: keep <code>/agents.md</code> at root, and keep change-specific files in <code>/.specification/changes/feature-name/</code>. When starting a session, include that folder path in chat.</small></p>
             <p>Open it and read a real, non-toy example front to back:</p>
             <ul>
                 <li><code>proposal.md</code> — the problem and scope</li>
