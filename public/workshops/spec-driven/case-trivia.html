@@ -106,14 +106,14 @@
         <!-- Beat 1 -->
         <div class="sdd-beat sdd-beat--before">
             <div class="sdd-beat__head"><span class="sdd-beat__n">1</span><h3>Intent — what problem, is it even worth a spec?</h3></div>
-            <p>In your workshop folder, start <code>opencode</code>. Ask yourself the facilitator's question: <em>"Could I one-shot this with a single prompt?"</em> Joining + categories + scoring has enough moving parts that the answer is no. That judgement is the whole point — you just earned the ceremony.</p>
-            <div class="sdd-checkpoint">✅ <strong>Checkpoint:</strong> you can say, in one sentence, what the app is: <em>"A host runs a quiz; people join from a meeting with a code and answer on their phones."</em></div>
+            <p>In your workshop folder, start <code>opencode</code>. Ask yourself the facilitator's question: <em>"Could I one-shot this with a single prompt?"</em> Joining + categories + scoring has enough moving parts that the answer is no. Start by creating <code>agents.md</code> (<a href="#" class="js-artifact-example-link" data-artifact="agents">example</a>) at repo root so your defaults are explicit: PHP-first, PSR-aligned, minimal JS, and DDEV as the dev/test loop.</p>
+            <div class="sdd-checkpoint">✅ <strong>Checkpoint:</strong> you can say, in one sentence, what the app is, and <code>/agents.md</code> exists with project rules.</div>
         </div>
 
         <!-- Beat 2 -->
         <div class="sdd-beat sdd-beat--before">
             <div class="sdd-beat__head"><span class="sdd-beat__n">2</span><h3>Spec — what &amp; why, as a file</h3></div>
-            <p>Create <code>spec.md</code> in the repo. This is a <strong>file the agent reads every session</strong>, not a chat message that vanishes. Fill in the skeleton — paste it to your agent and ask it to help you sharpen it, but <em>you</em> own the decisions.</p>
+            <p>Create <code>spec.md</code> (<a href="#" class="js-artifact-example-link" data-artifact="spec">example</a>) in <code>/.specification/changes/feature-name/</code>. This is a <strong>file the agent reads every session</strong>, not a chat message that vanishes. Fill in the skeleton — paste it to your agent and ask it to help you sharpen it, but <em>you</em> own the decisions.</p>
             <div class="sdd-code" id="t-spec"><span class="copy-badge" onclick="copyCode('t-spec')"><i class="fas fa-copy"></i> Copy</span><pre><code># spec.md — Trivia
 
 ## Problem
@@ -129,34 +129,36 @@ Existing tools need accounts or installs; we want "join with a code".
 
 ## Done means
 A joiner submits an answer and their score updates on screen.</code></pre></div>
-            <div class="sdd-checkpoint">✅ <strong>Checkpoint:</strong> <code>spec.md</code> exists and has no implementation detail in it — only <em>what</em> and <em>why</em>.</div>
+            <div class="sdd-checkpoint">✅ <strong>Checkpoint:</strong> <code>spec.md</code> exists in <code>/.specification/changes/feature-name/</code> and has no implementation detail in it — only <em>what</em> and <em>why</em>.</div>
         </div>
 
         <!-- Beat 3 -->
         <div class="sdd-beat sdd-beat--before">
             <div class="sdd-beat__head"><span class="sdd-beat__n">3</span><h3>Plan — how, grounded, then signed off</h3></div>
-            <p>Switch OpenCode to <strong>Plan mode</strong> (press <kbd>Tab</kbd>). Ask it to write <code>plan.md</code>: which files change, in what order, and <strong>the check that proves each part works</strong>. Keep it <em>grounded</em> — point it at the few files that matter, not "the whole repo".</p>
+            <p>Switch OpenCode to <strong>Plan mode</strong> (press <kbd>Tab</kbd>). Ask it to write <code>plan.md</code> (<a href="#" class="js-artifact-example-link" data-artifact="plan">example</a>) in <code>/.specification/changes/feature-name/</code>: which files change, in what order, and <strong>the check that proves each part works</strong>. Keep it grounded and aligned with <code>agents.md</code>: PHP-first structure, JS only where it adds clear value, and checks you run via DDEV.</p>
             <div class="sdd-code" id="t-plan"><span class="copy-badge" onclick="copyCode('t-plan')"><i class="fas fa-copy"></i> Copy</span><pre><code>We're building the app in spec.md. Stay in plan mode.
 Write plan.md: the files to create, in order, and for each step
-the command or check that proves it works. Keep it small — a single
-PHP entry point plus a questions store is fine. Do NOT write code yet.</code></pre></div>
+the command or check that proves it works (run checks through DDEV).
+Keep it small — a PHP entry point plus a questions store is fine.
+Use JS only where it clearly improves UX. Do NOT write code yet.</code></pre></div>
             <div class="sdd-signoff">
                 <i class="fas fa-stamp"></i>
                 <div><strong>Plan review gate (3 min).</strong> Show your <code>plan.md</code> to a facilitator or the person next to you. "Is this plan right?" Changing your mind <em>here</em> costs a paragraph. Changing it after 200 lines of code costs a rewrite. <em>This is where review moved to — the moment the whole method is about.</em></div>
             </div>
-            <div class="sdd-checkpoint">✅ <strong>Checkpoint:</strong> <code>plan.md</code> is reviewed, and every step names a check.</div>
+            <div class="sdd-checkpoint">✅ <strong>Checkpoint:</strong> <code>plan.md</code> is reviewed, every step names a check, and the DDEV run path is explicit.</div>
         </div>
 
         <!-- Beat 4 -->
         <div class="sdd-beat sdd-beat--before">
             <div class="sdd-beat__head"><span class="sdd-beat__n">4</span><h3>Tasks — units of work, still no code</h3></div>
-            <p>The last thing before code exists: turn the signed-off plan into a <strong>task list</strong> — small, ordered units the agent can execute and you can tick off. Stay in Plan mode.</p>
-            <div class="sdd-code" id="t-tasks"><span class="copy-badge" onclick="copyCode('t-tasks')"><i class="fas fa-copy"></i> Copy</span><pre><code>Still in plan mode — no code yet. Break plan.md into a checklist
+            <p>The last thing before code exists: turn the signed-off plan into <code>tasks.md</code> (<a href="#" class="js-artifact-example-link" data-artifact="tasks">example</a>) in that same <code>/.specification/changes/feature-name/</code> folder — small, ordered units the agent can execute and you can tick off. Stay in Plan mode.</p>
+            <div class="sdd-code" id="t-tasks"><span class="copy-badge" onclick="copyCode('t-tasks')"><i class="fas fa-copy"></i> Copy</span><pre><code>Still in plan mode — no code yet. Break plan.md into tasks.md
 of small tasks, in order, each one something you can verify on its
 own. For example:
 - [ ] questions store loads the seeded JSON
 - [ ] host can start a session and get a join code
-- [ ] a joiner submits an answer and their score updates</code></pre></div>
+- [ ] a joiner submits an answer and their score updates
+- [ ] checks run in DDEV and pass</code></pre></div>
             <div class="sdd-checkpoint">✅ <strong>Checkpoint:</strong> you have an ordered list of small tasks and <strong>nothing has been coded yet</strong>. Only now do you leave Plan mode.</div>
         </div>
 
@@ -169,7 +171,7 @@ own. For example:
         <!-- Beat 5 -->
         <div class="sdd-beat sdd-beat--after">
             <div class="sdd-beat__head"><span class="sdd-beat__n">5</span><h3>Implement — the agent writes</h3></div>
-            <p>Press <kbd>Tab</kbd> back to Build mode and let the agent work the tasks one by one. Grab the seeded questions so nobody stalls on content:</p>
+            <p>Press <kbd>Tab</kbd> back to Build mode and let the agent work <code>tasks.md</code> one by one. Keep it consistent with <code>agents.md</code>: PHP-first for backend/domain work, JS only where it helps UX, and run the dev loop in DDEV. Grab the seeded questions so nobody stalls on content:</p>
             <p><a class="sdd-download" href="assets/trivia-questions.json" download><i class="fas fa-file-download"></i> trivia-questions.json</a> — 8 categories, ready to import.</p>
             <p>When you specify behaviour, give the agent the <strong>acceptance scenario</strong> (the "oracle"), not a lecture on testing:</p>
             <div class="sdd-code" id="t-test"><span class="copy-badge" onclick="copyCode('t-test')"><i class="fas fa-copy"></i> Copy</span><pre><code>Add a check for this behaviour:
@@ -182,7 +184,7 @@ Write it as a runnable test, then implement until it passes.</code></pre></div>
         <!-- Beat 6 -->
         <div class="sdd-beat sdd-beat--after">
             <div class="sdd-beat__head"><span class="sdd-beat__n">6</span><h3>Verify — a check gates it, prose doesn't</h3></div>
-            <p>Pick one rule that matters and make it a <strong>deterministic check</strong>, not a polite sentence in the spec. This is the gate the agent has to get past.</p>
+            <p>Pick one rule that matters and make it a <strong>deterministic check</strong>, not a polite sentence in the spec. This is the gate the agent has to get past. Run it in DDEV so your check matches the team environment.</p>
             <div class="sdd-vs">
                 <div class="sdd-vs__col sdd-vs__col--bad"><span>Prose (weak)</span>"please don't allow empty questions"</div>
                 <div class="sdd-vs__col sdd-vs__col--good"><span>Sensor (real)</span>a test/validator that <strong>rejects</strong> an empty question</div>
@@ -193,7 +195,7 @@ Write it as a runnable test, then implement until it passes.</code></pre></div>
         <!-- Beat 7 -->
         <div class="sdd-beat sdd-beat--after">
             <div class="sdd-beat__head"><span class="sdd-beat__n">7</span><h3>Review — a human reads it</h3></div>
-            <p>You already agreed the plan, so this read is quick — you're checking the agent honoured it, not meeting the design for the first time. This is where you'll often notice <strong>the plan was wrong</strong>. That's not failure — it's the point, and because you're at review (not release) the fix is a paragraph. A classic one for this case:</p>
+            <p>You already agreed the plan, so this read is quick — you're checking the agent honoured it, not meeting the design for the first time. Also confirm consistency with your artifacts: <code>agents.md</code> rules followed, <code>spec.md</code> intent preserved, <code>tasks.md</code> executed, and DDEV checks green. This is where you'll often notice <strong>the plan was wrong</strong>. That's not failure — it's the point, and because you're at review (not release) the fix is a paragraph. A classic one for this case:</p>
             <div class="sdd-twist-box">
                 <div class="sdd-twist-row"><span class="sdd-twist-label">Plan said</span> "the join code lives in the client, baked in when the app is built"</div>
                 <div class="sdd-twist-row"><span class="sdd-twist-label">Reality</span> the client bundle is built without it → the code can never arrive</div>
@@ -243,9 +245,15 @@ Write it as a runnable test, then implement until it passes.</code></pre></div>
         <h2>Level up — see it as a tool <span class="sdd-optional">Optional · if time permits</span></h2>
         <p class="subtext subtext--left">Everything you just did by hand, there's a tool for: <strong>OpenSpec</strong>. Your facilitator may demo this on the beamer — and if the clock beat us to it, no problem, the take-home page below has the whole thing.</p>
         <div class="sdd-map">
+            <div class="sdd-map__row"><span class="sdd-map__hand">File placement defaults</span><span class="sdd-map__arrow">→</span><span class="sdd-map__os"><code>/agents.md</code> at root + change files in <code>/.specification/changes/feature-name/</code> (include the path in session chat)</span></div>
+            <div class="sdd-map__row"><span class="sdd-map__hand">Your <code>agents.md</code> rules (PHP-first, minimal JS, DDEV)</span><span class="sdd-map__arrow">→</span><span class="sdd-map__os">carried into <code>proposal.md</code> + <code>design.md</code></span></div>
             <div class="sdd-map__row"><span class="sdd-map__hand">Your <code>spec.md</code> — what &amp; why</span><span class="sdd-map__arrow">→</span><span class="sdd-map__os"><code>openspec</code> propose</span></div>
+            <div class="sdd-map__row"><span class="sdd-map__hand">Your "Done means…"</span><span class="sdd-map__arrow">→</span><span class="sdd-map__os">spec <code>#### Scenarios</code></span></div>
+            <div class="sdd-map__row"><span class="sdd-map__hand">Your <code>plan.md</code> (files, order, checks)</span><span class="sdd-map__arrow">→</span><span class="sdd-map__os"><code>design.md</code> implementation plan</span></div>
+            <div class="sdd-map__row"><span class="sdd-map__hand">Your <code>tasks.md</code> checklist</span><span class="sdd-map__arrow">→</span><span class="sdd-map__os"><code>tasks.md</code> in change folder (<code>- [ ]</code> → <code>- [x]</code>)</span></div>
             <div class="sdd-map__row"><span class="sdd-map__hand">Building task by task</span><span class="sdd-map__arrow">→</span><span class="sdd-map__os"><code>openspec</code> apply</span></div>
             <div class="sdd-map__row"><span class="sdd-map__hand">Reflect · spec becomes the truth</span><span class="sdd-map__arrow">→</span><span class="sdd-map__os"><code>openspec archive</code></span></div>
+            <div class="sdd-map__row"><span class="sdd-map__hand">Archive result</span><span class="sdd-map__arrow">→</span><span class="sdd-map__os">delta folded into baseline <code>openspec/specs/</code></span></div>
         </div>
         <div class="sdd-signoff">
             <i class="fas fa-graduation-cap"></i>
@@ -260,9 +268,22 @@ Write it as a runnable test, then implement until it passes.</code></pre></div>
     </nav>
 </main>
 
+<div class="sdd-modal-overlay" id="artifact-example-modal" role="dialog" aria-modal="true" aria-labelledby="artifact-example-title">
+    <div class="sdd-modal-box">
+        <div class="sdd-modal-head">
+            <h3 id="artifact-example-title">Example</h3>
+            <button type="button" class="sdd-modal-close" id="artifact-example-close" aria-label="Close">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <div class="sdd-code sdd-modal-code"><pre><code id="artifact-example-content"></code></pre></div>
+    </div>
+</div>
+
 <div id="toast" class="toast">Copied to clipboard!</div>
 
 <script src="../../js/script.js"></script>
+<script src="../../js/sdd-artifact-examples.js"></script>
 <script src="../../js/hack-fix.js"></script>
 </body>
 </html>

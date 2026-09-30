@@ -121,22 +121,27 @@
     <section class="prompts-section">
         <h2>3 · One vocabulary — four artifacts</h2>
         <p class="subtext subtext--left">Five independent frameworks (GitHub Spec Kit, AWS Kiro, BMAD, OpenSpec, Superpowers) all reinvented the same four files. They're files in the repo the agent reads every session — not a chat that vanishes.</p>
+        <p class="subtext subtext--left">Placement that works best across agents: keep <code>agents.md</code> at repo root, and keep <code>spec.md</code>, <code>plan.md</code>, <code>tasks.md</code> in <code>/.specification/changes/feature-name/</code>. Include that folder path in the session chat when you start work so the agent uses the right files.</p>
         <div class="sdd-artifacts">
             <div class="sdd-artifact">
-                <h4>Constitution</h4>
+                <h4>Constitution <code>agents.md</code></h4>
                 <p>The rules that don't change per feature — how you commit, what needs a human "yes". Written once, read every session.</p>
+                <p><a href="#" class="sdd-artifact__example js-artifact-example-link" data-artifact="agents">example</a></p>
             </div>
             <div class="sdd-artifact">
                 <h4>Spec <code>spec.md</code></h4>
                 <p>What &amp; why. The problem, the decision, the boundaries. No implementation.</p>
+                <p><a href="#" class="sdd-artifact__example js-artifact-example-link" data-artifact="spec">example</a></p>
             </div>
             <div class="sdd-artifact">
                 <h4>Plan <code>plan.md</code></h4>
                 <p>How, grounded in the codebase. Which files, which order, and the check that proves it worked.</p>
+                <p><a href="#" class="sdd-artifact__example js-artifact-example-link" data-artifact="plan">example</a></p>
             </div>
             <div class="sdd-artifact">
-                <h4>Tasks</h4>
+                <h4>Tasks <code>tasks.md</code></h4>
                 <p>Units an agent can execute and a human can tick off.</p>
+                <p><a href="#" class="sdd-artifact__example js-artifact-example-link" data-artifact="tasks">example</a></p>
             </div>
         </div>
     </section>
@@ -183,6 +188,7 @@
         <h2>6 · Take it home</h2>
         <div class="instruction-box">
             <p>Today you'll do spec-driven development by hand. To keep doing it on your own projects, there's a free tool that gives it structure and a repeatable lifecycle — <strong>OpenSpec</strong>. The take-home guide walks you through install → propose → apply → archive, and points at the real change that built this very workshop.</p>
+            <p><small>Use this default layout: <code>/agents.md</code> at repo root, and work-specific files in <code>/.specification/changes/feature-name/</code>. At session start, include that folder path in chat so the agent loads the right context.</small></p>
             <p><a href="next-project.html" class="sdd-download"><i class="fas fa-rocket"></i> Use this on your next project</a></p>
             <p><small>Curious what this workshop is built on? See the <a href="about.html">about &amp; credits</a> page for the full list of tools and technologies used.</small></p>
         </div>
@@ -193,6 +199,18 @@
         <a href="case-trivia.html" class="exercise-nav-link exercise-nav-link--next">Pick a case &amp; start <i class="fas fa-arrow-right"></i></a>
     </nav>
 </main>
+
+<div class="sdd-modal-overlay" id="artifact-example-modal" role="dialog" aria-modal="true" aria-labelledby="artifact-example-title">
+    <div class="sdd-modal-box">
+        <div class="sdd-modal-head">
+            <h3 id="artifact-example-title">Example</h3>
+            <button type="button" class="sdd-modal-close" id="artifact-example-close" aria-label="Close">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <div class="sdd-code sdd-modal-code"><pre><code id="artifact-example-content"></code></pre></div>
+    </div>
+</div>
 
 <footer class="footer">
     <div class="container">
@@ -231,5 +249,6 @@
 </footer>
 
 <script src="../../js/script.js"></script>
+<script src="../../js/sdd-artifact-examples.js"></script>
 </body>
 </html>

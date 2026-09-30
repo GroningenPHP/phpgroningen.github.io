@@ -1,12 +1,12 @@
 # Date:
-August 6, 2026
+October 1, 2026
 # Title
-PHP Meetup, Building Better Software with AI: Spec-Driven Development
+Hands-on, Building Better Software with AI: Spec-Driven Development
 # Description
-👋 Welcome to our monthly Software Development Meetup!
-
-We meet .... knowledge, exchanging ideas, and getting to know other developers in a relaxed, f...
+This month we go beyond just asking AI to write code.
+We'll practise Spec-Driven Development: settle the problem, the plan, and what "done" means
+— before any code exists — then let a free AI coding agent build it.
 # Location
 Youwe Groningen
 # Link
-https://www.meetup.com/groningenphp/events/315082420/
+https://www.meetup.com/groningenphp/events/316384127/
