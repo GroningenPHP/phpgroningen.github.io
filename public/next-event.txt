@@ -1,12 +1,11 @@
 # Date:
-October 1, 2026
+November 5th, 2026
 # Title
-Hands-on, Building Better Software with AI: Spec-Driven Development
+Meetup, Help the robots are taking over! 🤖
 # Description
-This month we go beyond just asking AI to write code.
-We'll practise Spec-Driven Development: settle the problem, the plan, and what "done" means
-— before any code exists — then let a free AI coding agent build it.
+Learn how to build robots — then code and race!
+What parts does a robot need, and how does everything work together? ⚙️🔧 Rein knows all about building robots and will explain how it’s done. He’s also created a website with all the information you need to get started yourself.
 # Location
 Youwe Groningen
 # Link
-https://www.meetup.com/groningenphp/events/316384127/
+https://www.meetup.com/groningenphp/events/315424058/
