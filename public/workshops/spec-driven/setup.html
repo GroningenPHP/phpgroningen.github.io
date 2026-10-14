@@ -194,17 +194,17 @@ npm install -g opencode-ai</code></pre></div>
                     <li>Point OpenCode at it via <code>opencode.json</code> (OpenAI-compatible endpoint):
                         <div class="cmd" id="o-conf"><span class="copy-badge" onclick="copyCode('o-conf')"><i class="fas fa-copy"></i> Copy</span><pre>
                             <code>
-                                {
-                                  "$schema": "https://opencode.ai/config.json",
-                                  "provider": {
-                                    "ollama": {
-                                      "npm": "@ai-sdk/openai-compatible",
-                                      "name": "Ollama (local)",
-                                      "options": { "baseURL": "http://localhost:11434/v1" },
-                                      "models": { "qwen2.5-coder": { "name": "Qwen2.5 Coder" } }
-                                    }
-                                  }
-                                }
+{
+  "$schema": "https://opencode.ai/config.json",
+  "provider": {
+    "ollama": {
+      "npm": "@ai-sdk/openai-compatible",
+      "name": "Ollama (local)",
+      "options": { "baseURL": "http://localhost:11434/v1" },
+      "models": { "qwen2.5-coder": { "name": "Qwen2.5 Coder" } }
+    }
+  }
+}
                             </code></pre>
                         </div>
                     </li>
