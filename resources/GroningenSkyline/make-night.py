@@ -4,7 +4,7 @@
 Darkens every colour towards a night blue and lights up a (deterministic)
 selection of the small window rectangles with a warm glow.
 
-Usage: python3 make-night.py <day.svg> <night.svg>
+Usage: python3 make-night.py groningenphp-skyline-hero.svg <night.svg>
 Afterwards compress both files (keeps the viewBox):
     npx svgo --config svgo.config.cjs <in.svg> -o <out.svg>
 """
