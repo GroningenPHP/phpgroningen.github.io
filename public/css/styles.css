@@ -1005,8 +1005,11 @@ h1, h2, h3, h4, h5, h6 {
     }
 
     .hero {
-        height: 50vh;
-        max-height: 50vh;
+        min-height: 50vh;
+    }
+
+    .hero-content {
+        padding-bottom: 70px; /* Keep the water visible below the buttons */
     }
 
     .hero h1 {
@@ -1020,6 +1023,7 @@ h1, h2, h3, h4, h5, h6 {
     .hero-buttons {
         flex-direction: column;
         align-items: center;
+        gap: 12px;
     }
 
     .about-grid {
