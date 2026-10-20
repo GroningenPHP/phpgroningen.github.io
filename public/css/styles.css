@@ -454,6 +454,301 @@ h1, h2, h3, h4, h5, h6 {
     100% { transform: translate(calc(var(--drift) * -1), 10px); opacity: 0.3; }
 }
 
+/* Holidays: data-holiday is set by js/hero-season.js, on top of the season */
+
+/* Sinterklaas: rides over the roofs in the skyline image, pepernoten and the odd present */
+.hero[data-holiday="sinterklaas"] .hero-bg {
+    background-image: url('/images/groningenphp-skyline-sinterklaas.svg');
+}
+
+.hero[data-holiday="sinterklaas"][data-time="night"] .hero-bg {
+    background-image: url('/images/groningenphp-skyline-sinterklaas-night.svg');
+}
+
+.hero[data-holiday="sinterklaas"] .hero-particle {
+    -webkit-mask: none;
+    mask: none;
+    border-radius: 50%;
+    background: radial-gradient(circle at 35% 35%, #d39a5c, #8a5524 75%);
+    box-shadow: none;
+    opacity: 0.85;
+}
+
+.hero[data-holiday="sinterklaas"] .hero-particle:nth-child(4n) {
+    border-radius: 2px;
+    background:
+        linear-gradient(90deg, transparent 42%, #f2c94c 42%, #f2c94c 58%, transparent 58%),
+        linear-gradient(0deg, transparent 42%, #f2c94c 42%, #f2c94c 58%, transparent 58%),
+        #c8102e;
+}
+
+.hero-steamboat {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 2;
+}
+
+.hero-steamboat-boat {
+    position: absolute;
+    left: -140px;
+    bottom: 22px;
+    width: 110px;
+    animation: hero-sail 70s linear infinite;
+    opacity: 0.9;
+}
+
+.hero-steamboat svg {
+    display: block;
+    width: 100%;
+    animation: hero-bob 3s ease-in-out infinite alternate;
+}
+
+.hero-steamboat .hull { fill: #1f3f8a; }
+.hero-steamboat .stripe { fill: #f3f3f3; }
+.hero-steamboat .cabin { fill: #f3f3f3; }
+.hero-steamboat .porthole { fill: #1f3f8a; }
+.hero-steamboat .chimney { fill: #c8102e; }
+.hero-steamboat .chimney-top { fill: #222; }
+.hero-steamboat .flag { fill: #c8102e; stroke: #555; stroke-width: 1; }
+
+.hero[data-time="night"] .hero-steamboat .porthole { fill: #ffd36b; }
+.hero[data-time="night"] .hero-steamboat .cabin,
+.hero[data-time="night"] .hero-steamboat .stripe { fill: #b9c3d8; }
+
+/* Smoke puffs from the chimney */
+.hero-steamboat-boat i {
+    position: absolute;
+    left: 46%;
+    top: 0;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: rgba(200, 205, 215, 0.7);
+    animation: hero-smoke 3s ease-out infinite;
+}
+
+.hero-steamboat-boat i:nth-of-type(2) { animation-delay: -1s; }
+.hero-steamboat-boat i:nth-of-type(3) { animation-delay: -2s; }
+
+@keyframes hero-sail {
+    from { transform: translateX(0); }
+    to { transform: translateX(calc(100vw + 280px)); }
+}
+
+@keyframes hero-bob {
+    from { transform: translateY(0) rotate(-1deg); }
+    to { transform: translateY(2px) rotate(1deg); }
+}
+
+@keyframes hero-smoke {
+    0% { transform: translate(0, 0) scale(0.4); opacity: 0.8; }
+    100% { transform: translate(-30px, -36px) scale(1.8); opacity: 0; }
+}
+
+/* Christmas: the DOT is dressed up as a bauble, fairy lights, snow from the particles */
+.hero[data-holiday="christmas"] .hero-bg {
+    background-image: url('/images/groningenphp-skyline-christmas.svg');
+}
+
+.hero[data-holiday="christmas"][data-time="night"] .hero-bg {
+    background-image: url('/images/groningenphp-skyline-christmas-night.svg');
+}
+
+.hero[data-holiday="christmas"] .hero-particle {
+    -webkit-mask: none;
+    mask: none;
+    background: #fff;
+    border-radius: 50%;
+    box-shadow: 0 0 4px rgba(150, 170, 200, 0.6);
+    opacity: 0.9;
+}
+
+.hero-garland {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 70px; /* below the fixed navbar */
+    height: 48px;
+    pointer-events: none;
+    z-index: 2;
+}
+
+.hero-garland svg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.hero-garland path {
+    fill: none;
+    stroke: #3b4a3f;
+    stroke-width: 1.5;
+    vector-effect: non-scaling-stroke;
+    opacity: 0.6;
+}
+
+.hero-garland span {
+    position: absolute;
+    width: 8px;
+    height: 11px;
+    margin: -1px 0 0 -4px;
+    border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+    background: #e53935;
+    box-shadow: 0 0 8px 2px rgba(229, 57, 53, 0.55);
+    animation: hero-bulb 3s ease-in-out var(--delay) infinite alternate;
+}
+
+.hero-garland span:nth-child(4n+2) { background: #fbc02d; box-shadow: 0 0 8px 2px rgba(251, 192, 45, 0.55); }
+.hero-garland span:nth-child(4n+3) { background: #43a047; box-shadow: 0 0 8px 2px rgba(67, 160, 71, 0.55); }
+.hero-garland span:nth-child(4n) { background: #1e88e5; box-shadow: 0 0 8px 2px rgba(30, 136, 229, 0.55); }
+
+.hero[data-time="night"] .hero-garland path { stroke: #9aa6c4; }
+
+@keyframes hero-bulb {
+    from { opacity: 0.45; }
+    to { opacity: 1; }
+}
+
+/* Santa's sleigh flying across the sky now and then */
+.hero-sleigh {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    pointer-events: none;
+    z-index: 2; /* Above the text glow, below the text */
+}
+
+.hero-sleigh-ride {
+    position: absolute;
+    left: -220px;
+    top: 30%;
+    width: 170px;
+    animation: hero-fly 40s linear var(--delay, 3s) infinite;
+}
+
+.hero-sleigh svg {
+    display: block;
+    width: 100%;
+    overflow: visible;
+    animation: hero-swoop 3.2s ease-in-out infinite alternate;
+}
+
+.hero-sleigh .sleigh { fill: #c8102e; }
+.hero-sleigh .runner { fill: none; stroke: #e0b03c; stroke-width: 2.2; stroke-linecap: round; }
+.hero-sleigh .santa { fill: #d42a2a; }
+.hero-sleigh .face { fill: #f3c9a8; }
+.hero-sleigh .white { fill: #ffffff; }
+.hero-sleigh .sack { fill: #8a5a2b; }
+.hero-sleigh .deer { fill: #8b5e3c; }
+.hero-sleigh .legs { fill: none; stroke: #8b5e3c; stroke-width: 2.4; stroke-linecap: round; }
+.hero-sleigh .antlers { fill: none; stroke: #5e3d22; stroke-width: 1.4; stroke-linecap: round; }
+.hero-sleigh .reins { fill: none; stroke: #5e3d22; stroke-width: 0.9; }
+.hero-sleigh .nose { fill: #ff2b2b; }
+
+.hero[data-time="night"] .hero-sleigh svg { filter: brightness(0.8) saturate(0.85); }
+.hero[data-time="night"] .hero-sleigh .nose { filter: drop-shadow(0 0 3px #ff2b2b) drop-shadow(0 0 6px #ff2b2b); }
+
+/* Flies across in the first part of the loop, then stays off-screen */
+@keyframes hero-fly {
+    0% { transform: translateX(0); }
+    45%, 100% { transform: translateX(calc(100vw + 440px)); }
+}
+
+@keyframes hero-swoop {
+    from { transform: translateY(-12px) rotate(-3deg); }
+    to { transform: translateY(10px) rotate(2deg); }
+}
+
+@media (max-width: 768px) {
+    /* Between the meetup badge and the title */
+    .hero-sleigh-ride {
+        top: 120px;
+        width: 100px;
+    }
+
+    .hero-sleigh svg {
+        animation-name: hero-swoop-small;
+    }
+}
+
+@keyframes hero-swoop-small {
+    from { transform: translateY(-5px) rotate(-3deg); }
+    to { transform: translateY(5px) rotate(2deg); }
+}
+
+/* New Year: the Christmas trees stay, confetti by day, fireworks day and night */
+.hero[data-holiday="newyear"] .hero-bg {
+    background-image: url('/images/groningenphp-skyline-newyear.svg');
+}
+
+.hero[data-holiday="newyear"][data-time="night"] .hero-bg {
+    background-image: url('/images/groningenphp-skyline-newyear-night.svg');
+}
+
+.hero[data-holiday="newyear"] .hero-particle {
+    -webkit-mask: none;
+    mask: none;
+    height: calc(var(--size) * 0.45);
+    border-radius: 1px;
+    background: #e53935;
+    box-shadow: none;
+    opacity: 0.85;
+}
+
+.hero[data-holiday="newyear"] .hero-particle:nth-child(5n+1) { background: #fbc02d; }
+.hero[data-holiday="newyear"] .hero-particle:nth-child(5n+2) { background: #1e88e5; }
+.hero[data-holiday="newyear"] .hero-particle:nth-child(5n+3) { background: #43a047; }
+.hero[data-holiday="newyear"] .hero-particle:nth-child(5n+4) { background: #8e24aa; }
+
+.hero-fireworks {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 2;
+}
+
+.hero-firework {
+    position: absolute;
+    left: var(--x);
+    top: var(--y);
+    width: 0;
+    height: 0;
+    --color: hsl(var(--hue), 90%, 62%);
+}
+
+.hero-firework span {
+    position: absolute;
+    left: -2px;
+    top: -2px;
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background: var(--color);
+    box-shadow: 0 0 6px 1px var(--color);
+    opacity: 0;
+    animation: hero-spark var(--duration) cubic-bezier(0.15, 0.7, 0.3, 1) var(--delay) infinite;
+}
+
+.hero[data-time="day"] .hero-firework {
+    --color: hsl(var(--hue), 85%, 48%);
+}
+
+@keyframes hero-spark {
+    0% { transform: rotate(var(--angle)) translateY(0) scale(1); opacity: 0; }
+    4% { opacity: 1; }
+    45% { transform: rotate(var(--angle)) translateY(calc(var(--radius) * -1)) scale(1); opacity: 1; }
+    70% { transform: rotate(var(--angle)) translateY(calc(var(--radius) * -1.1)) translateX(0) scale(0.6); opacity: 0; }
+    100% { transform: rotate(var(--angle)) translateY(calc(var(--radius) * -1.1)) scale(0.6); opacity: 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .hero-garland span {
+        animation: none;
+    }
+}
+
 @media (prefers-reduced-motion: reduce) {
     .hero[data-time="night"]::before {
         animation: none;
