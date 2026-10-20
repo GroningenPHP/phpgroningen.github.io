@@ -412,6 +412,21 @@ fetch('next-event.txt')
         // Make entire card clickable
         const eventLink = document.getElementById('eventLink');
         if (eventLink) eventLink.href = link;
+
+        // Hero "Next meetup" pill, only shown while the event is upcoming
+        const heroNextEvent = document.getElementById('heroNextEvent');
+        const eventDate = new Date(date);
+        if (heroNextEvent && !isNaN(eventDate.getTime())) {
+            const endOfEventDay = new Date(eventDate);
+            endOfEventDay.setHours(23, 59, 59, 999);
+            if (endOfEventDay >= new Date()) {
+                document.getElementById('heroNextEventDate').textContent =
+                    eventDate.toLocaleDateString('en-GB', { weekday: 'short', day: 'numeric', month: 'short' });
+                document.getElementById('heroNextEventLocation').textContent = loc;
+                heroNextEvent.href = link;
+                heroNextEvent.hidden = false;
+            }
+        }
     })
     .catch(err => {
         console.error('Error loading event:', err);

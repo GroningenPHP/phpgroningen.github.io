@@ -1,3 +1,11 @@
+@font-face {
+    font-family: 'Inter';
+    font-style: normal;
+    font-display: swap;
+    font-weight: 100 900;
+    src: url('/fonts/inter-latin-wght.woff2') format('woff2-variations');
+}
+
 /* Updated font variables for better readability */
 :root {
     --groningen-red: #DA121A;
@@ -7,7 +15,7 @@
     --dark-gray: #333333;
     --light-gray: #f8f9fa;
     --medium-gray: #666666;
-    --heading-font: 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
+    --heading-font: 'Inter', 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
     --body-font: 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
 }
 
@@ -143,7 +151,9 @@ h1, h2, h3, h4, h5, h6 {
     --hero-sun: rgba(255, 214, 102, 0.35);
     --hero-skyline-filter: saturate(60%);
     --hero-cloud-opacity: 1;
-    background: linear-gradient(180deg, var(--hero-sky-top) 0%, var(--hero-sky-mid) 45%, var(--hero-sky-low) 75%, var(--light-gray) 100%);
+    --hero-skyline-opacity: 0.5;
+    --hero-sky-bottom: var(--light-gray);
+    background: linear-gradient(180deg, var(--hero-sky-top) 0%, var(--hero-sky-mid) 45%, var(--hero-sky-low) 75%, var(--hero-sky-bottom) 100%);
 }
 
 /* Fade the water into the next section instead of a hard edge */
@@ -167,7 +177,7 @@ h1, h2, h3, h4, h5, h6 {
     height: 68%;
     background: url('/images/groningenphp-skyline.svg') bottom center/cover no-repeat;
     filter: var(--hero-skyline-filter);
-    opacity: 0.5;
+    opacity: var(--hero-skyline-opacity);
     pointer-events: none; /* Allows clicks through to buttons/links */
     z-index: 1; /* Should be under .hero-content */
 }
@@ -332,13 +342,131 @@ h1, h2, h3, h4, h5, h6 {
     }
 }
 
+/* Night theme: data-time is set by js/hero-season.js (Amsterdam time) */
+.hero[data-time="night"] {
+    --hero-sky-top: #0a1430;
+    --hero-sky-mid: #16244a;
+    --hero-sky-low: #26365f;
+    --hero-sky-bottom: #2f4070;
+    --hero-skyline-filter: none;
+    --hero-skyline-opacity: 0.95;
+    --hero-cloud-opacity: 0.12;
+}
+
+.hero[data-time="night"] .hero-content {
+    color: #4cd47a;
+}
+
+.hero[data-time="night"]::before {
+    content: '';
+    position: absolute;
+    inset: 0 0 35% 0;
+    background-image:
+        radial-gradient(1.5px 1.5px at 20px 30px, #fff, transparent),
+        radial-gradient(1px 1px at 90px 80px, #fff, transparent),
+        radial-gradient(1.5px 1.5px at 160px 20px, rgba(255, 255, 255, 0.8), transparent),
+        radial-gradient(1px 1px at 210px 120px, #fff, transparent),
+        radial-gradient(1px 1px at 60px 150px, rgba(255, 255, 255, 0.7), transparent),
+        radial-gradient(2px 2px at 260px 60px, rgba(255, 255, 255, 0.9), transparent);
+    background-size: 300px 180px;
+    -webkit-mask-image: linear-gradient(180deg, #000 40%, transparent 100%);
+    mask-image: linear-gradient(180deg, #000 40%, transparent 100%);
+    animation: hero-twinkle 6s ease-in-out infinite alternate;
+    pointer-events: none;
+    z-index: 0;
+}
+
+@keyframes hero-twinkle {
+    from { opacity: 0.55; }
+    to { opacity: 1; }
+}
+
+.hero[data-time="night"]::after {
+    height: 70px;
+    background: linear-gradient(180deg, rgba(248, 249, 250, 0) 0%, var(--light-gray) 100%);
+}
+
+.hero[data-time="night"] .hero-bg {
+    background-image: url('/images/groningenphp-skyline-night.svg');
+}
+
+/* Moon instead of sun, and a dark halo behind the text */
+.hero[data-time="night"] .hero-overlay {
+    background:
+        radial-gradient(ellipse 45% 40% at 50% 30%, rgba(10, 20, 48, 0.55) 0%, rgba(10, 20, 48, 0) 100%),
+        radial-gradient(circle 22px at 84% 28%, #f6f1dc 96%, rgba(246, 241, 220, 0) 100%),
+        radial-gradient(circle at 84% 28%, rgba(246, 241, 220, 0.25) 0%, rgba(246, 241, 220, 0) 9%);
+}
+
+.hero[data-time="night"] h1 {
+    text-shadow: 0 2px 20px rgba(0, 0, 0, 0.5);
+}
+
+.hero[data-time="night"] h1 .hero-accent {
+    color: #8ab4ff;
+}
+
+.hero[data-time="night"] p {
+    color: #dbe5ff;
+    text-shadow: 0 1px 10px rgba(0, 0, 0, 0.5);
+}
+
+.hero[data-time="night"] .hero-next-event {
+    background: rgba(255, 255, 255, 0.12);
+    border-color: rgba(255, 255, 255, 0.2);
+    color: #e6ecff;
+}
+
+.hero[data-time="night"] .hero-next-event strong {
+    color: #8ab4ff;
+}
+
+.hero[data-time="night"] .btn-secondary {
+    background: rgba(255, 255, 255, 0.08);
+    border-color: rgba(255, 255, 255, 0.7);
+    color: var(--groningen-white);
+}
+
+.hero[data-time="night"] .btn-secondary:hover {
+    background: var(--groningen-white);
+    color: var(--groningen-blue);
+}
+
+/* Summer nights: fireflies instead of birds */
+.hero[data-season="summer"][data-time="night"] .hero-particle {
+    -webkit-mask: none;
+    mask: none;
+    top: var(--y);
+    left: var(--x);
+    height: var(--size);
+    border-radius: 50%;
+    background: #ffe27a;
+    box-shadow: 0 0 8px 3px rgba(255, 226, 122, 0.6);
+    opacity: 0.9;
+    animation-name: hero-firefly;
+    animation-timing-function: ease-in-out;
+    animation-direction: alternate;
+}
+
+@keyframes hero-firefly {
+    0% { transform: translate(0, 0); opacity: 0.2; }
+    50% { transform: translate(var(--drift), -20px); opacity: 1; }
+    100% { transform: translate(calc(var(--drift) * -1), 10px); opacity: 0.3; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .hero[data-time="night"]::before {
+        animation: none;
+    }
+}
+
 .hero-content {
     color: var(--groningen-green);
     position: relative;
     z-index: 3; /* Above background, glow and fade */
     max-width: 1200px;
     margin: 0 auto;
-    padding: calc(5vh + 40px) 20px 30px;
+    padding: calc(4vh + 60px) 20px 30px;
     text-align: center;
 }
 
@@ -350,9 +478,79 @@ h1, h2, h3, h4, h5, h6 {
     font-family: var(--heading-font);
     text-shadow: 0 0 24px rgba(255, 255, 255, 0.9), 0 2px 4px rgba(7, 137, 48, 0.15);
     font-size: 3.5rem;
-    margin-bottom: 20px;
-    font-weight: 800;
-    letter-spacing: -0.02em;
+    line-height: 1.1;
+    margin-bottom: 18px;
+    font-weight: 700;
+    letter-spacing: -0.035em;
+}
+
+/* "Next meetup" pill, filled from next-event.txt by js/script.js */
+.hero-next-event {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 22px;
+    padding: 7px 16px 7px 8px;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.75);
+    border: 1px solid rgba(15, 71, 175, 0.15);
+    box-shadow: 0 4px 14px rgba(15, 71, 175, 0.08);
+    backdrop-filter: blur(6px);
+    color: var(--dark-gray);
+    font-size: 0.95rem;
+    text-decoration: none;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.hero-next-event[hidden] {
+    display: none;
+}
+
+.hero-next-event:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 6px 18px rgba(15, 71, 175, 0.15);
+}
+
+.hero-next-event-label {
+    white-space: nowrap;
+    padding: 3px 10px;
+    border-radius: 999px;
+    background: var(--groningen-green);
+    color: var(--groningen-white);
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+}
+
+.hero-next-event strong {
+    color: var(--groningen-blue);
+}
+
+.hero .btn {
+    border-radius: 999px;
+    padding: 14px 30px;
+}
+
+.hero .btn-primary {
+    box-shadow: 0 8px 20px rgba(218, 18, 26, 0.25);
+}
+
+.hero .btn-secondary {
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(6px);
+}
+
+.hero .btn:hover {
+    filter: none;
+}
+
+.hero .btn-primary:hover {
+    box-shadow: 0 10px 24px rgba(218, 18, 26, 0.35);
+}
+
+.hero .btn-secondary:hover {
+    background: var(--groningen-white);
 }
 
 .hero h1 .hero-accent {
@@ -1012,6 +1210,15 @@ h1, h2, h3, h4, h5, h6 {
         padding-bottom: 70px; /* Keep the water visible below the buttons */
     }
 
+    /* Keep the A-kerk and Martinitoren in view on narrow screens */
+    .hero-bg {
+        background-position: 56% bottom;
+    }
+
+    .hero-next-event {
+        font-size: 0.85rem;
+    }
+
     .hero h1 {
         font-size: 2.5rem;
     }
@@ -1106,6 +1313,10 @@ h1, h2, h3, h4, h5, h6 {
 @media (max-width: 480px) {
     .container {
         padding: 0 15px;
+    }
+
+    .hero-next-event-location {
+        display: none;
     }
 
     .hero h1 {
