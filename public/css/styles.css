@@ -132,39 +132,214 @@ h1, h2, h3, h4, h5, h6 {
 /* Hero Section */
 .hero {
     color: var(--groningen-green);
-    min-height: 75vh;
+    min-height: 62vh;
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     position: relative;
     overflow: hidden;
+    --hero-sky-top: #cfdcf3;
+    --hero-sky-mid: #e4ecf9;
+    --hero-sky-low: #f4f7fd;
+    --hero-sun: rgba(255, 214, 102, 0.35);
+    --hero-skyline-filter: saturate(60%);
+    --hero-cloud-opacity: 1;
+    background: linear-gradient(180deg, var(--hero-sky-top) 0%, var(--hero-sky-mid) 45%, var(--hero-sky-low) 75%, var(--light-gray) 100%);
+}
+
+/* Fade the water into the next section instead of a hard edge */
+.hero::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 40px;
+    background: linear-gradient(180deg, rgba(248, 249, 250, 0) 0%, var(--light-gray) 100%);
+    pointer-events: none;
+    z-index: 2;
 }
 
 .hero-bg {
     position: absolute;
-    top: 0;
     left: 0;
+    bottom: 0;
     width: 100%;
-    height: 100%;
-    background: url('/images/phpgroningen-hero2.png') top center/cover no-repeat;
-    filter: brightness(100%) contrast(100%) grayscale(20%);
+    height: 68%;
+    background: url('/images/groningenphp-skyline.svg') bottom center/cover no-repeat;
+    filter: var(--hero-skyline-filter);
+    opacity: 0.5;
     pointer-events: none; /* Allows clicks through to buttons/links */
     z-index: 1; /* Should be under .hero-content */
 }
 
-.hero-content {
-    background: rgba(255, 255, 255, 0.2);
-    backdrop-filter: blur(8px);
-    border-radius: 12px;
-    color: var(--groningen-green);
-    text-shadow: 0 0.1rem 0.2rem rgba(0,0,0,0.8);
-    display: inline-block;
-    position: relative;
-    z-index: 2; /* Ensures content stays above the background */
-    max-width: 1200px;
-    margin: 40px auto;
-    padding: 20px 20px;
-    text-align: center;
+/* Soft sun glow behind the text, replaces the frosted box */
+.hero-overlay {
+    position: absolute;
+    inset: 0;
+    background:
+        radial-gradient(ellipse 45% 40% at 50% 30%, rgba(255, 255, 255, 0.95) 0%, rgba(255, 255, 255, 0.6) 45%, rgba(255, 255, 255, 0) 100%),
+        radial-gradient(circle at 84% 16%, var(--hero-sun) 0%, rgba(255, 255, 255, 0) 10%);
+    pointer-events: none;
     z-index: 2;
+}
+
+/* Drifting clouds */
+.hero-pattern {
+    position: absolute;
+    top: 6%;
+    left: 0;
+    width: 200%;
+    height: 30%;
+    background:
+        radial-gradient(ellipse 120px 28px at 8% 40%, rgba(255, 255, 255, 0.9), transparent 70%),
+        radial-gradient(ellipse 80px 22px at 11% 30%, rgba(255, 255, 255, 0.9), transparent 70%),
+        radial-gradient(ellipse 160px 30px at 30% 70%, rgba(255, 255, 255, 0.8), transparent 70%),
+        radial-gradient(ellipse 100px 24px at 33% 58%, rgba(255, 255, 255, 0.8), transparent 70%),
+        radial-gradient(ellipse 140px 26px at 44% 25%, rgba(255, 255, 255, 0.85), transparent 70%),
+        radial-gradient(ellipse 120px 28px at 58% 40%, rgba(255, 255, 255, 0.9), transparent 70%),
+        radial-gradient(ellipse 80px 22px at 61% 30%, rgba(255, 255, 255, 0.9), transparent 70%),
+        radial-gradient(ellipse 160px 30px at 80% 70%, rgba(255, 255, 255, 0.8), transparent 70%),
+        radial-gradient(ellipse 100px 24px at 83% 58%, rgba(255, 255, 255, 0.8), transparent 70%),
+        radial-gradient(ellipse 140px 26px at 94% 25%, rgba(255, 255, 255, 0.85), transparent 70%);
+    opacity: var(--hero-cloud-opacity);
+    animation: hero-clouds 120s linear infinite;
+    pointer-events: none;
+    z-index: 1;
+}
+
+@keyframes hero-clouds {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .hero-pattern {
+        animation: none;
+    }
+}
+
+/* Seasonal themes: data-season is set by js/hero-season.js */
+.hero[data-season="autumn"] {
+    --hero-sky-top: #e9d9c4;
+    --hero-sky-mid: #f3e8da;
+    --hero-sky-low: #f8f3ec;
+    --hero-sun: rgba(240, 140, 60, 0.4);
+    --hero-skyline-filter: saturate(55%) sepia(20%);
+    --hero-cloud-opacity: 0.8;
+}
+
+.hero[data-season="winter"] {
+    --hero-sky-top: #d6dde6;
+    --hero-sky-mid: #e8edf2;
+    --hero-sky-low: #f4f6f9;
+    --hero-sun: rgba(255, 255, 255, 0.6);
+    --hero-skyline-filter: saturate(30%) brightness(1.05);
+    --hero-cloud-opacity: 1;
+}
+
+.hero[data-season="spring"] {
+    --hero-sky-top: #cfe2f5;
+    --hero-sky-mid: #e6f1f6;
+    --hero-sky-low: #f4f9f6;
+    --hero-sun: rgba(255, 228, 130, 0.4);
+    --hero-skyline-filter: saturate(75%);
+    --hero-cloud-opacity: 0.9;
+}
+
+.hero[data-season="summer"] {
+    --hero-sky-top: #a9c8ef;
+    --hero-sky-mid: #d5e5f8;
+    --hero-sky-low: #f1f6fd;
+    --hero-sun: rgba(255, 200, 40, 0.55);
+    --hero-skyline-filter: saturate(85%);
+    --hero-cloud-opacity: 0.6;
+}
+
+.hero-particles {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 2;
+}
+
+.hero-particle {
+    position: absolute;
+    top: -40px;
+    left: var(--x);
+    width: var(--size);
+    height: var(--size);
+    animation: hero-fall var(--duration) linear var(--delay) infinite;
+    will-change: transform;
+}
+
+@keyframes hero-fall {
+    0% { transform: translate(0, 0) rotate(0deg); }
+    25% { transform: translate(var(--drift), 18vh) rotate(calc(var(--spin) * 0.25)); }
+    50% { transform: translate(0, 36vh) rotate(calc(var(--spin) * 0.5)); }
+    75% { transform: translate(var(--drift), 54vh) rotate(calc(var(--spin) * 0.75)); }
+    100% { transform: translate(0, 72vh) rotate(var(--spin)); }
+}
+
+/* Autumn: falling leaves */
+.hero[data-season="autumn"] .hero-particle {
+    -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M12 2c3 4 8 5 8 11a8 8 0 0 1-7 8v2h-2v-2a8 8 0 0 1-7-8c0-6 5-7 8-11z'/%3E%3C/svg%3E") center/contain no-repeat;
+    mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M12 2c3 4 8 5 8 11a8 8 0 0 1-7 8v2h-2v-2a8 8 0 0 1-7-8c0-6 5-7 8-11z'/%3E%3C/svg%3E") center/contain no-repeat;
+    background: #d9822b;
+    opacity: 0.75;
+}
+.hero[data-season="autumn"] .hero-particle:nth-child(3n) { background: #b8452a; }
+.hero[data-season="autumn"] .hero-particle:nth-child(3n+1) { background: #e0a83a; }
+
+/* Winter: snow */
+.hero[data-season="winter"] .hero-particle {
+    background: #fff;
+    border-radius: 50%;
+    box-shadow: 0 0 4px rgba(150, 170, 200, 0.6);
+    opacity: 0.9;
+}
+
+/* Spring: blossom petals */
+.hero[data-season="spring"] .hero-particle {
+    background: #f6b8c8;
+    border-radius: 80% 0 80% 0;
+    opacity: 0.8;
+}
+.hero[data-season="spring"] .hero-particle:nth-child(2n) { background: #fbd6e0; }
+
+/* Summer: birds gliding across the sky */
+.hero[data-season="summer"] .hero-particle {
+    top: var(--y);
+    left: -60px;
+    height: calc(var(--size) / 2);
+    -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 20'%3E%3Cpath d='M0 6c6-4 13-3 20 6 7-9 14-10 20-6-7 0-13 4-20 12C13 10 7 6 0 6z'/%3E%3C/svg%3E") center/contain no-repeat;
+    mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 20'%3E%3Cpath d='M0 6c6-4 13-3 20 6 7-9 14-10 20-6-7 0-13 4-20 12C13 10 7 6 0 6z'/%3E%3C/svg%3E") center/contain no-repeat;
+    background: #4a5a78;
+    opacity: 0.55;
+    animation-name: hero-fly;
+}
+
+@keyframes hero-fly {
+    0% { transform: translate(0, 0); }
+    25% { transform: translate(30vw, var(--drift)); }
+    50% { transform: translate(60vw, 0); }
+    75% { transform: translate(90vw, var(--drift)); }
+    100% { transform: translate(calc(100vw + 120px), 0); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .hero-particles {
+        display: none;
+    }
+}
+
+.hero-content {
+    color: var(--groningen-green);
+    position: relative;
+    z-index: 3; /* Above background, glow and fade */
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: calc(5vh + 40px) 20px 30px;
+    text-align: center;
 }
 
 .hero-content-text {
@@ -173,21 +348,25 @@ h1, h2, h3, h4, h5, h6 {
 
 .hero h1 {
     font-family: var(--heading-font);
-    text-shadow: 0 2px 8px rgba(0,0,0,0.5);
+    text-shadow: 0 0 24px rgba(255, 255, 255, 0.9), 0 2px 4px rgba(7, 137, 48, 0.15);
     font-size: 3.5rem;
     margin-bottom: 20px;
-    font-weight: 700;
+    font-weight: 800;
     letter-spacing: -0.02em;
+}
+
+.hero h1 .hero-accent {
+    color: var(--groningen-blue);
 }
 
 .hero p {
     font-size: 1.3rem;
     margin-bottom: 30px;
-    opacity: 0.9;
+    color: var(--groningen-blue);
+    text-shadow: 0 0 12px rgba(255, 255, 255, 0.9);
 }
 
 .hero-buttons {
-    text-shadow: 0 2px 8px rgba(0,0,0,0.5);
     display: flex;
     gap: 20px;
     justify-content: center;
