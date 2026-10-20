@@ -140,7 +140,7 @@ h1, h2, h3, h4, h5, h6 {
 /* Hero Section */
 .hero {
     color: var(--groningen-green);
-    min-height: 62vh;
+    min-height: clamp(400px, 42vh, 500px);
     display: flex;
     align-items: flex-start;
     position: relative;
@@ -466,7 +466,7 @@ h1, h2, h3, h4, h5, h6 {
     z-index: 3; /* Above background, glow and fade */
     max-width: 1200px;
     margin: 0 auto;
-    padding: calc(4vh + 60px) 20px 30px;
+    padding: clamp(80px, 3vh + 50px, 95px) 20px 30px;
     text-align: center;
 }
 
@@ -1144,10 +1144,26 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .footer-bottom {
-    border-top: 1px solid #555;
+    position: relative;
+    margin-top: 70px;
     padding-top: 20px;
     text-align: center;
     color: #ccc;
+}
+
+/* Skyline outline doubles as the divider line */
+.footer-bottom::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 100%;
+    height: 64px;
+    background:
+        url('../images/groningenphp-skyline-outline.svg') center bottom / auto 64px no-repeat,
+        linear-gradient(#8C96A8, #8C96A8) left bottom / 100% 1.5px no-repeat;
+    opacity: 0.55;
+    pointer-events: none;
 }
 
 /* Ripple Effect for Buttons */
@@ -1169,6 +1185,10 @@ h1, h2, h3, h4, h5, h6 {
 
 /* Responsive Design */
 @media (max-width: 768px) {
+    .footer-bottom::before {
+        background-position: 80% bottom, left bottom;
+    }
+
     .nav-menu {
         position: fixed;
         left: -100%;
@@ -1210,9 +1230,9 @@ h1, h2, h3, h4, h5, h6 {
         padding-bottom: 70px; /* Keep the water visible below the buttons */
     }
 
-    /* Keep the A-kerk and Martinitoren in view on narrow screens */
+    /* Keep the Martinitoren in view on narrow screens */
     .hero-bg {
-        background-position: 56% bottom;
+        background-position: 75% bottom;
     }
 
     .hero-next-event {
