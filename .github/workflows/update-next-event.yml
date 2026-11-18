@@ -1,0 +1,40 @@
+name: Update next event
+
+on:
+  schedule:
+    - cron: "0 4 * * *"   # every day at 04:00 UTC
+  workflow_dispatch:       # adds a "Run workflow" button on the Actions tab
+
+permissions:
+  contents: write          # push the updated file
+  actions: write           # start the Pages deploy workflow
+
+concurrency:
+  group: update-next-event
+  cancel-in-progress: false
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+
+      - name: Fetch next event from Meetup
+        run: python3 scripts/update_next_event.py public/next-event.txt
+
+      - name: Commit, push and deploy if changed
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          git add public/next-event.txt
+          if git diff --staged --quiet; then
+            echo "Next event unchanged, nothing to do."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git commit -m "Update next-event to $(sed -n 2p public/next-event.txt)"
+          git push
+          # Pushes made by this workflow don't trigger static.yml on their own,
+          # so start the GitHub Pages deploy explicitly.
+          gh workflow run static.yml --ref "${{ github.ref_name }}"
