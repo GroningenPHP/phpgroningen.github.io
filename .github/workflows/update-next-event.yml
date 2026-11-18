@@ -6,8 +6,8 @@ on:
   workflow_dispatch:       # adds a "Run workflow" button on the Actions tab
 
 permissions:
-  contents: write          # push the updated file
-  actions: write           # start the Pages deploy workflow
+  contents: write          # push the bot/next-event branch
+  pull-requests: write     # open/update the pull request
 
 concurrency:
   group: update-next-event
@@ -19,22 +19,31 @@ jobs:
     steps:
       - uses: actions/checkout@v5
 
-      - name: Fetch next event from Meetup
-        run: python3 scripts/update_next_event.py public/next-event.txt
-
-      - name: Commit, push and deploy if changed
-        env:
-          GH_TOKEN: ${{ github.token }}
+      # If a PR is already open, start from its version of the file, so a
+      # description someone edited in that PR is kept instead of overwritten.
+      - name: Use the open PR's file, if any
         run: |
-          git add public/next-event.txt
-          if git diff --staged --quiet; then
-            echo "Next event unchanged, nothing to do."
-            exit 0
+          if git fetch --depth=1 origin bot/next-event 2>/dev/null; then
+            git show FETCH_HEAD:public/next-event.txt > public/next-event.txt
           fi
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git commit -m "Update next-event to $(sed -n 2p public/next-event.txt)"
-          git push
-          # Pushes made by this workflow don't trigger static.yml on their own,
-          # so start the GitHub Pages deploy explicitly.
-          gh workflow run static.yml --ref "${{ github.ref_name }}"
+
+      - name: Fetch next event from Meetup
+        id: event
+        run: |
+          python3 scripts/update_next_event.py public/next-event.txt
+          echo "date=$(sed -n 2p public/next-event.txt)" >> "$GITHUB_OUTPUT"
+
+      - name: Open or update pull request
+        uses: peter-evans/create-pull-request@v8
+        with:
+          branch: bot/next-event
+          delete-branch: true
+          add-paths: public/next-event.txt
+          commit-message: Update next-event to ${{ steps.event.outputs.date }}
+          title: Update next event to ${{ steps.event.outputs.date }}
+          body: |
+            The next upcoming event on [Meetup](https://www.meetup.com/groningenphp/events/) has changed.
+
+            Check `public/next-event.txt` (the description is shortened automatically; feel free to edit it in this PR), then approve and merge. Merging deploys the site.
+
+            _Opened automatically by the "Update next event" workflow._
