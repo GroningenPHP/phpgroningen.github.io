@@ -1,11 +1,12 @@
 # Date:
-November 5, 2026
+December 3, 2026
 # Title
-Meetup, Help the robots are taking over! 🤖
+🛠️ Spec-Driven Development in Action | 🚀 Live AI Project Demos
 # Description
-Learn how to build robots — then code and race!
-What parts does a robot need, and how does everything work together? ⚙️🔧 Rein knows all about building robots and will explain how it’s done. He’s also created a website with all the information you need to get started yourself.
+👋 Welcome.....
+🎤 At this meetup, we’ll hear from two experienced speakers, each sharing a project they built themselves.
+💻 They’ll take us through how they built it and what they learned along the...
 # Location
 Youwe Groningen
 # Link
-https://www.meetup.com/groningenphp/events/315424058/
+https://www.meetup.com/groningenphp/events/317355011/
